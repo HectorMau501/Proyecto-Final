@@ -1,0 +1,162 @@
+/**Plantilla de Colores**/
+
+:root{
+    --blanco:  #ffffff;
+    --oscuro:  #2C3333;
+    --primario: #2E4F4F;
+    --secundario: #0E8388;
+    --claro: #CBE4DE;
+    --gris: #757575;
+
+    --Fuente-Principal: 'Hind Siliguri', sans-serif;
+}
+
+
+/**Globales**/
+html{
+    font-size: 62.5%;
+    background-image: linear-gradient(to top, #DFE9F3 0%, var(--claro)); /*Para el color de fondo*/
+}
+
+h1{
+    font-size: 4.5rem;
+}
+
+h2{
+    font-size: 3.5rem;
+}
+
+h3{
+    font-size: 2.5rem;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+body{
+    font-size: 2rem;
+    font-family: var(--Fuente-Principal)
+}
+
+.contenedor{
+    width: 120rem;
+    margin: 0 auto;
+}
+
+/**Navegacion Principal**/
+.nav-bg{
+    background-color: var(--secundario);
+}
+
+.navegacion-principal{
+    display: flex;
+    justify-content: space-between;
+}
+
+.navegacion-principal a{
+    padding: 1rem;
+    color: var(--blanco);
+ 
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.nav-a{
+    display: flex;
+}
+
+.especiales{
+    display: flex;
+    justify-content: end;
+    background-color: #0E5E6F;
+    border-style: solid;
+    border-color: var(--oscuro);
+}
+
+.navegacion-principal a:hover{
+    background-color: var(--primario);
+    color: var(--);
+}
+
+
+
+/**Formularios**/
+
+.formulario{
+    background-color: var(--oscuro);
+    width: min(60rem , 100%);
+    margin: 5rem auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    
+}
+
+.formulario fieldset{
+    border: none;
+}
+
+.formulario legend{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: var(--blanco);
+}
+
+.campo{
+    margin-bottom: 1.5rem;
+}
+
+.campo label{
+    color: var(--blanco);
+    font-weight: bold;
+}
+
+/**Selectores**/
+
+.input-text{
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+
+        /**Utilidades (Buttom)**/
+.button{
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 2rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    width: 90%;
+    border: none;
+}
+
+.button:hover{
+    cursor: pointer;
+}
+
+
+.button_move{
+width: 100%;
+}
+
+.flex{
+display: flex;
+}
+
+.alinear-derecha{
+justify-content: flex-end;
+}
+
+/**Footer**/
+#footer{
+    text-align: center;
+    font-size: 1.8rem;
+}
+
