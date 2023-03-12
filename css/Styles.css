@@ -13,10 +13,21 @@
 
 
 /**Globales**/
+header{
+    font-size: 4rem;
+    font-family: 'Kaushan Script', cursive;
+    text-align: center;
+}
+
 html{
     font-size: 62.5%;
+    box-sizing: border-box;
     background-image: linear-gradient(to top, #DFE9F3 0%, var(--claro)); /*Para el color de fondo*/
 }
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
 
 h1{
     font-size: 4.5rem;
@@ -36,8 +47,53 @@ h1,h2,h3{
 
 body{
     font-size: 2rem;
-    font-family: var(--Fuente-Principal)
+    font-family: var(--Fuente-Principal);
+    line-height: 1.5; /*Este es el interlineado*/
 }
+
+/*Descripcion*/
+
+.descripciones{
+display: grid;
+grid-template-columns: repeat(2,1fr); /*Para tamanio y dividir las columnas y los fr es lo mismo que decir 33.3% a cada una y el repeat es para que te lo repita tres veces*/
+column-gap: 1rem;
+margin: 3rem;
+gap: 4rem;
+}
+
+.descripcion_3,
+.descripcion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.descripcion_3 h3,
+.descripcion h3{
+    color: var(--secundario);
+    font-weight: normal; /*Para la negrita de la letra*/
+}
+
+.descripcion_3,
+.descripcion p{
+    line-height: 2; /*Para cambiar el internileado*/
+    text-align: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.descripcion_3{
+    grid-column: 1 / 3; 
+}
+
+.descripcion {
+   /* height: 15rem;
+    width: 15rem;
+    display: flex;
+    justify-content: space-evenly; /* Para alinear el contenido al centro
+    align-items: center; Para centrar los iconos*/
+}
+
 
 .contenedor{
     width: 120rem;
@@ -47,6 +103,7 @@ body{
 /**Navegacion Principal**/
 .nav-bg{
     background-color: var(--secundario);
+    width: 100%;
 }
 
 .navegacion-principal{
@@ -55,58 +112,87 @@ body{
 }
 
 .navegacion-principal a{
-    padding: 1rem;
     color: var(--blanco);
- 
+    display: block;
+    padding: 1rem;
     text-decoration: none;
     font-size: 2rem;
-    font-weight: bolder;
+
 }
+
 
 .nav-a{
     display: flex;
 }
 
-.especiales{
+.nav-r{
     display: flex;
     justify-content: end;
     background-color: #0E5E6F;
-    border-style: solid;
-    border-color: var(--oscuro);
 }
 
 .navegacion-principal a:hover{
     background-color: var(--primario);
-    color: var(--);
 }
+
 
 
 
 /**Formularios**/
 
-.formulario{
-    background-color: var(--oscuro);
-    width: min(60rem , 100%);
-    margin: 5rem auto;
-    padding: 2rem;
-    border-radius: 1rem;
+.login,
+.Registro{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
     
 }
 
+.auto__imagen{
+    display: grid;
+    margin: auto;
+    margin-top: 1.8rem;
+    
+}
+
+.formulario{
+    display: inline;
+    position: relative;
+    left: 5rem;
+    background-color: var(--oscuro);
+    width: min(40rem , 100%);
+    margin: 3.5rem 3rem 3.5rem 3.5rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    height: 80%;  
+    
+}
+
+.formulario__login{
+    background-color: var(--oscuro);
+    width: min(40rem , 100%);
+    margin: 5rem 3rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    height: 75%;
+}
+
+.formulario__login fieldset,
 .formulario fieldset{
     border: none;
 }
 
+.formulario__login Legend,
 .formulario legend{
     text-align: center;
     text-transform: uppercase;
     font-weight: 700;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: var(--blanco);
 }
 
 .campo{
-    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.7rem;
 }
 
 .campo label{
@@ -114,11 +200,35 @@ body{
     font-weight: bold;
 }
 
+.campo_registrarse h3{
+    font-size: 1.5rem;
+    color: var(--blanco);
+    font-weight: normal;
+    text-align: start;
+    margin: 0%;
+}
+
+.campo_registrarse a{
+    display: block;
+    font-size: 1.5rem;
+    color: var(--blanco);
+    font-weight: normal;
+    text-align: start;
+}
+
+.registrar_link{
+    display: inline;
+    position: relative;
+    bottom: 2.1rem;
+    left: 18rem;
+}
+
 /**Selectores**/
 
 .input-text{
+    text-align:unset;
     width: 100%;
-    padding: 1rem;
+    padding: 1rem 0.1rem;
     border: none;
     border-radius: 0.5rem;
 }
@@ -129,12 +239,13 @@ body{
     background-color: var(--secundario);
     color: var(--blanco);
     padding: 1rem 3rem;
-    margin-top: 2rem;
     text-transform: uppercase;
     font-weight: bolder;
     border-radius: 0.5rem;
     width: 90%;
     border: none;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
 .button:hover{
@@ -155,8 +266,11 @@ justify-content: flex-end;
 }
 
 /**Footer**/
-#footer{
+
+.footer{
     text-align: center;
     font-size: 1.8rem;
+    background-color: var(--secundario);
+    color: var(--blanco);
 }
 

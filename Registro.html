@@ -6,7 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link rel="stylesheet" href="css/Styles.css">
+
+    <header>The Cars</header>
 
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
@@ -15,7 +24,7 @@
                 <a href="Productos.html">Productos</a>
                 <a href="https://goo.gl/maps/XtakJLDHcUynud4g8">Ubicación</a>
             </div>
-            <div class="especiales">
+            <div class="nav-r">
                 <a href="Registro.html">Registro</a>
                 <a href="Login.html">Login</a>
             </div>
@@ -24,38 +33,44 @@
 
 </head>
 <body>
-    <main>
-        <form class="formulario">
-            <fieldset>
-                <legend>Crear una Cuenta</legend>
-    
-                <div class="contenedor-campos">
-                    <div class="campo">
-                        <label>Nombre</label>
-                        <input class="input-text" type="text" type="text" placeholder="Nombre">
-                    </div>
-    
-                    <div class="campo">
-                        <label>Correo</label>
-                        <input class="input-text" type="text" type="text" placeholder="Correo">
-                    </div>
-    
-                    <div class="campo">
-                        <label>Contraseña</label>
-                        <input class="input-text" type="text" type="text" placeholder="Contraseña">
-                    </div>
-                </div>
-                <div class="alinear-derecha flex">
-                    <button class="button button_move" class="input-text" type="submit" name="Registro" value="Crear Cuenta">Crear Cuenta</button>
-                </div>
-            </fieldset>
-        </form>
+    <main class="Contenido">
+       
+        <div class="Registro">  
+            <img class="auto__imagen" src="img/Registrar.jpg" alt="" height="450">
+            <!--Foto de <a href="https://unsplash.com/@lrscarpino?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luke Scarpino</a> en <a href="https://unsplash.com/es/fotos/-W3XAnu1Ih4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>-->
 
+            <form class="formulario">
+                <fieldset>
+                    <legend>Crear una Cuenta</legend>
+        
+                    <div class="contenedor-campos">
+                        <disv class="campo">
+                            <label>Nombre</label>
+                            <input class="input-text" type="text" type="text" placeholder="Nombre">
+                        </disv>
+        
+                        <div class="campo">
+                            <label>Correo</label>
+                            <input class="input-text" type="text" type="text" placeholder="Correo">
+                        </div>
+        
+                        <div class="campo">
+                            <label>Contraseña</label>
+                            <input class="input-text" type="text" type="text" placeholder="Contraseña">
+                        </div>
+                    </div>
+                    <div class="alinear-derecha flex">
+                        <button class="button button_move" class="input-text" type="submit" name="Registro" value="Crear Cuenta">Crear Cuenta</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
 
     </main>
     
-    <footer id="footer">
+    <footer class="footer">
         <p>Todos los Derechos reservados para The Cars</p>
     </footer>
+
 </body>
 </html>
