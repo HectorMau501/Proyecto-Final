@@ -1,4 +1,4 @@
-/**Plantilla de Colores**/
+            /**Plantilla de Colores**/
 
 :root{
     --blanco:  #ffffff;
@@ -12,7 +12,8 @@
 }
 
 
-/**Globales**/
+            /**Globales**/
+.eslogan,            
 header{
     font-size: 4rem;
     font-family: 'Kaushan Script', cursive;
@@ -23,6 +24,7 @@ html{
     font-size: 62.5%;
     box-sizing: border-box;
     background-image: linear-gradient(to top, #DFE9F3 0%, var(--claro)); /*Para el color de fondo*/
+
 }
 
 *, *:before, *:after {
@@ -51,7 +53,8 @@ body{
     line-height: 1.5; /*Este es el interlineado*/
 }
 
-/*Descripcion*/
+
+            /**Descripcion**/
 
 .descripciones{
 display: grid;
@@ -100,7 +103,8 @@ gap: 4rem;
     margin: 0 auto;
 }
 
-/**Navegacion Principal**/
+            /**Navegacion Principal**/
+
 .nav-bg{
     background-color: var(--secundario);
     width: 100%;
@@ -117,9 +121,7 @@ gap: 4rem;
     padding: 1rem;
     text-decoration: none;
     font-size: 2rem;
-
 }
-
 
 .nav-a{
     display: flex;
@@ -135,10 +137,47 @@ gap: 4rem;
     background-color: var(--primario);
 }
 
+            /**Productos**/
+   
+.grid_autos{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7rem 2rem; 
+    
+}
+
+.producto{
+    border-radius: 0.5rem;
+    background-color: var(--oscuro);
+    padding:2rem;
+}
+
+.producto a{
+    text-decoration: none;
+}
+
+.producto__nombre{
+    font-size: 3rem;
+    justify-content: center;
+    color: var(--blanco);
+
+}
+
+.producto__precio{
+    font-size: 2.5rem;
+    color: var(--blanco);
+}
+
+.producto__nombre,
+.producto__precio{
+    font-family: var(--Fuente-Principal);
+    margin: 1rem 0;
+
+    line-height: 1.2;
+}
 
 
-
-/**Formularios**/
+            /**Formularios**/
 
 .login,
 .Registro{
@@ -147,11 +186,16 @@ gap: 4rem;
     
 }
 
-.auto__imagen{
+.auto__imagen--registro{
+    display: grid;
+    margin-top: 10rem;  
+    margin-left: 2rem;
+}
+
+.auto__imagen--login{
     display: grid;
     margin: auto;
-    margin-top: 1.8rem;
-    
+    margin-top: 1.8rem;  
 }
 
 .formulario{
@@ -160,11 +204,11 @@ gap: 4rem;
     left: 5rem;
     background-color: var(--oscuro);
     width: min(40rem , 100%);
-    margin: 3.5rem 3rem 3.5rem 3.5rem;
+    margin: 3.5rem 3rem 0rem 3.5rem;
     padding: 2rem;
     border-radius: 1rem;
-    height: 80%;  
-    
+    height: 90%;
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);     
 }
 
 .formulario__login{
@@ -174,6 +218,7 @@ gap: 4rem;
     padding: 2rem;
     border-radius: 1rem;
     height: 75%;
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
 }
 
 .formulario__login fieldset,
@@ -200,6 +245,18 @@ gap: 4rem;
     font-weight: bold;
 }
 
+.campo_contraseña a{
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.contraseña_link{
+    text-align: center;
+    color: var(--blanco);
+}
+
 .campo_registrarse h3{
     font-size: 1.5rem;
     color: var(--blanco);
@@ -219,11 +276,19 @@ gap: 4rem;
 .registrar_link{
     display: inline;
     position: relative;
-    bottom: 2.1rem;
+    bottom: 2rem;
     left: 18rem;
 }
 
-/**Selectores**/
+.Login_link{
+    display: inline;
+    position: relative;
+    bottom: 2.2rem;
+    left: 15rem;
+}
+
+
+            /**Selectores**/
 
 .input-text{
     text-align:unset;
@@ -234,7 +299,7 @@ gap: 4rem;
 }
 
 
-        /**Utilidades (Buttom)**/
+             /**Utilidades (Buttom)**/
 .button{
     background-color: var(--secundario);
     color: var(--blanco);
@@ -252,7 +317,6 @@ gap: 4rem;
     cursor: pointer;
 }
 
-
 .button_move{
 width: 100%;
 }
@@ -265,7 +329,7 @@ display: flex;
 justify-content: flex-end;
 }
 
-/**Footer**/
+            /**Footer**/
 
 .footer{
     text-align: center;
