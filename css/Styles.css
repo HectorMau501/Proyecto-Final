@@ -347,7 +347,6 @@ text-align: center;
 @media (min-width: 1148px) {
     .login,
     .Registro{
-        display: grid;
         grid-template-columns: repeat(2 , 1fr);   
     }
 }
@@ -393,15 +392,7 @@ text-align: center;
 
 @media (min-width: 768px) {
     .formulario_registro{
-        display: inline;
-        position: relative;
-        background-color: var(--oscuro);
         width: min(40rem , 100%);
-        margin: auto;
-        padding: 2rem 2rem 8rem 2rem;
-        height: 90%;
-        border-radius: 1rem;
-        box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);     
     }  
 }
 
@@ -416,12 +407,7 @@ text-align: center;
 
 @media (min-width: 768px) {
     .formulario__login{
-        background-color: var(--oscuro);
         width: min(40rem , 100%);
-        margin: 2rem auto;
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
     }    
 }
 

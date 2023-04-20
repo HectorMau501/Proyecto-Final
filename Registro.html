@@ -15,8 +15,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link rel="stylesheet" href="css/Styles.css">
-    
-    
+
+</head>
+<body>
+      
+   
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
@@ -31,42 +34,40 @@
         </nav>
     </div>
 
-</head>
-<body>
     <main class="Contenido">
        
         <div class="Registro">  
             <img class="auto__imagen--registro" src="img/Registrar.jpg" alt="Imagen del Registro">
             <!--Foto de <a href="https://unsplash.com/@lrscarpino?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luke Scarpino</a> en <a href="https://unsplash.com/es/fotos/-W3XAnu1Ih4?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>-->
 
-            <form class="formulario_registro">
+            <form class="formulario_registro" method="POST" action="Registro.php">
                 <fieldset>
                     <legend>Crear una Cuenta</legend>
         
                     <div class="contenedor-campos">
                         <disv class="campo">
-                            <label>Nombre</label>
-                            <input class="input-text" type="text" type="text" placeholder="Nombre">
+                            <label for="nombre">Nombre</label>
+                            <input class="input-text" type="text" name="nombre" id="nombre" type="text" placeholder="Nombre">
                         </disv>
         
                         <div class="campo">
-                            <label>Correo</label>
-                            <input class="input-text" type="text" type="text" placeholder="Correo">
+                            <label for="correo">Correo</label>
+                            <input class="input-text" type="email" name="correo" id="correo"  type="text" placeholder="Correo">
                         </div>
         
                         <div class="campo">
-                            <label>Contraseña</label>
-                            <input class="input-text" type="text" type="text" placeholder="Contraseña">
+                            <label for="contrasena">Contraseña</label>
+                            <input class="input-text" type="password" name="password" id="password" type="text" placeholder="password">
                         </div>
 
                         <div class="campo">
-                            <label>Dirección</label>
-                            <input class="input-text" type="text" type="text" placeholder="Dirección">
+                            <label for="direccion">Dirección</label>
+                            <input class="input-text" type="text"  name="direccion" type="text" id="direccion" placeholder="Dirección">
                         </div>
 
                         <div class="campo">
-                            <label>Teléfono</label>
-                            <input class="input-text" type="text" type="text" placeholder="Teléfono">
+                            <label for="telefono">Teléfono</label>
+                            <input class="input-text" type="number" name="telefono"  id="telefono" type="text" placeholder="Teléfono">
                         </div>
 
                         <div class="alinear-derecha flex">
@@ -75,7 +76,7 @@
 
                         <div class="campo_registrarse">
                             <h3>¿Tienes una cuenta?</h3>
-                            <a class="Login_link" href="Login.html"> Ingresar</a>
+                            <a class="Login_link" href="Login.html">Ingresar</a>
                         </div>
 
                     </div>
