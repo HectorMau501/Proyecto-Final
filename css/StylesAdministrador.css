@@ -1,4 +1,4 @@
-                    /**Globales**/
+                     /**Globales**/
 
           /**Plantilla**/
 
@@ -92,7 +92,6 @@ img{
 
 @media (min-width: 375px) {
     .navegacion-principal{
-        display: flex;
         flex-direction:  column;
         align-items: center;
     }
@@ -100,7 +99,6 @@ img{
 
 @media (min-width: 768px) {
     .navegacion-principal{
-        display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
@@ -125,7 +123,6 @@ img{
 
 @media (min-width: 768px) {
     .nav__derecha{
-        display: flex;
         justify-content: end;
     }    
 }
@@ -216,17 +213,7 @@ font-size: 3.5rem;
 font-family: 'Kaushan Script', cursive;
 text-align: center;
 }
-
-
-@media (min-width: 768px) {
-    .eslogan{
-        font-size: 3.5rem;
-        font-family: 'Kaushan Script', cursive;
-        text-align: center;
-    }
-}
-
-                  
+                 
 
         /**Descripcion**/
 
@@ -242,9 +229,6 @@ text-align: center;
     .descripciones{
         display: grid;
         grid-template-columns: repeat(3 , 1fr); /*Para tamanio y dividir las columnas y los fr es lo mismo que decir 33.3% a cada una y el repeat es para que te lo repita tres veces*/
-        column-gap: 1rem;
-        margin: 3rem;
-        gap: 4rem;
     }
 }
 
@@ -347,7 +331,6 @@ text-align: center;
 @media (min-width: 1148px) {
     .login,
     .Registro{
-        display: grid;
         grid-template-columns: repeat(2 , 1fr);   
     }
 }
@@ -393,15 +376,7 @@ text-align: center;
 
 @media (min-width: 768px) {
     .formulario_registro{
-        display: inline;
-        position: relative;
-        background-color: var(--oscuro);
         width: min(40rem , 100%);
-        margin: auto;
-        padding: 2rem 2rem 8rem 2rem;
-        height: 90%;
-        border-radius: 1rem;
-        box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);  
     }  
 }
 
@@ -416,12 +391,8 @@ text-align: center;
 
 @media (min-width: 768px) {
     .formulario__login{
-        background-color: var(--oscuro);
         width: min(40rem , 100%);
-        margin: 2rem auto;
-        padding: 2rem;
-        border-radius: 1rem;
-        box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+        margin: auto;
     }    
 }
 
@@ -488,13 +459,21 @@ text-align: center;
 .input-text{
     text-align:unset;
     width: 100%;
-    padding: 1rem 0.5rem;
+    padding: 1rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
 }
 
 
                  /**Utilidades (Buttom)**/
+.button_move{
+    width: auto;
+}
+
+.button_move--Login{
+    width: 100%;
+}
+
 .button{
     background-color: var(--secundario);
     color: var(--blanco);
@@ -502,18 +481,15 @@ text-align: center;
     text-transform: uppercase;
     font-weight: bolder;
     border-radius: 0.5rem;
-    width: 90%;
     border: none;
     margin-top: 1rem;
     margin-bottom: 1rem;
 }
 
 .button:hover{
+    background-color: var(--gris);
+    color: var(--blanco);
     cursor: pointer;
-}
-
-.button_move{
-    width: 100%;
 }
 
 .flex{
@@ -581,8 +557,6 @@ th{
     margin-left: auto;
     margin-right: auto;
     border-bottom: 0.2rem solid black;
-    padding: 1rem;
-
     border-collapse:separate;
     empty-cells:hide;
     border-spacing: 1rem;
@@ -595,7 +569,7 @@ td{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-
+    padding: 1rem 3rem;
     border-collapse:separate;
     empty-cells:hide;
     border-spacing: 1rem;

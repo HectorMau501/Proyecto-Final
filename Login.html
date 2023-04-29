@@ -38,23 +38,23 @@
         <div class="login">  
             <img class="auto__imagen--login" src="img/Login.jpg" alt="Imagen del Login">
             <!--            <a href="https://unsplash.com/@alonly?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"></a><a href="https://unsplash.com/es/fotos/fP1jFz9FYuI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"></a>-->
-            <form class="formulario__login">
+            <form class="formulario__login" method="post" action="Login.php">
                 <fieldset>
                     <legend>Iniciar Sesión</legend>
         
                     <div class="contenedor-campos">
                         <div class="campo">
                             <label>Correo</label>
-                            <input class="input-text" type="text" type="text" placeholder="Correo">
+                            <input class="input-text" type="email" name="correo" placeholder="Correo">
                         </div>
         
                         <div class="campo">
                             <label>Contraseña</label>
-                            <input class="input-text" type="text" type="text" placeholder="Contraseña">
+                            <input class="input-text" type="password" name="password" placeholder="Contraseña">
                         </div>
 
                         <div class="alinear-derecha flex">
-                            <button class="button button_move" class="input-text" type="submit" name="Login" value="Iniciar Sesión">Iniciar Sesión</button>
+                            <button class="button button_move--Login" class="input-text" type="submit" name="login" value="Iniciar Sesión">Iniciar Sesión</button>
                         </div>
 
                         <div class="campo_contraseña">
