@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    include 'Conexion.php';
+    echo '
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="/css/StylesAdministrador.css">
+    <link rel="stylesheet" href="css/StylesAdministrador.css">
 
    
     <div class="nav-bg">
@@ -33,35 +35,37 @@
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="ProductosAdministrador.html">Administrador</a>
+            <a href="MostrarUsuarios.php">Administrador</a>
             <a href="Agregar.html">Agregar</a>
             <a href="Eliminar.html">Eliminar</a>
             <a href="Modificar.html">Modificar</a>
             <a href="Buscar.html">Buscar</a>
         </nav>
     </div>
+    
 
 </head>
+
 <body>
 
     <main class="contenedor">
-        <h2 class="centrar-texto">Bienvenido Administrador</h2>
+        <h2 class="centrar-texto">Buscar</h2>
 
         <div class="Administrador">  
             
             <form class="formulario__usuario">
                 <fieldset>
-                    <legend>Buscar Usuario</legend>
+                    <legend>Buscar Productos</legend>
         
                     <div class="contenedor-campos">
                         <div class="campo">
-                            <label>ID, Nombre o Correo</label>
-                            <input class="input-text" type="text" name="nombre" placeholder="Atributo">
+                            <label>ID, Nombre, Marca o Tipo</label>
+                            <input class="input-text" type="text" type="text" placeholder="Atributo">
                         </div>
 
                         <div class="campo">
-                            <label>Objeto</label>
-                            <input class="input-text" type="text" name="Objeto" placeholder="Objeto">
+                            <label>Producto</label>
+                            <input class="input-text" type="text" type="text" placeholder="Producto">
                         </div>
 
                         <div class="alinear-derecha flex">
@@ -72,6 +76,16 @@
             </form>
         </div>
 
+    </main>
+    ';  
+
+
+    $sql = "SELECT id, nombre, correo, password, telefono, direccion FROM usuario";
+    $result = $con ->query($sql);
+
+    if($result -> num_rows > 0){
+        echo "
+        
         <table>
             <caption>Usuarios</caption>
             <tr>
@@ -81,34 +95,26 @@
                 <th>Contraseña</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Juan Jesus Buenrostro Garcia</td>
-                <td>Jesus10gmai.com</td>
-                <td>************</td>
-                <td>3314321789</td>
-                <td>#2817 Valle de los Rubies</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Windows</td>
-                <td></td>          
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Linux</td>
-                <td>20%</td>
-            </tr>
-        </table>
-    </main>
+            </tr>"
+        ;
+        while($row = $result ->fetch_assoc()){
+            echo "<tr>";
+                echo "<td>".$row["id"]."</td>";
+                echo "<td>".$row["nombre"]."</td>"; 
+                echo "<td>".$row["correo"]."</td>"; 
+                echo "<td>".$row["password"]."</td>"; 
+                echo "<td>".$row["telefono"]."</td>"; 
+                echo "<td>".$row["direccion"]."</td>";  
+            echo "</tr>";
+        }
+    }else{
+        echo "0 results";
+    }
 
-
+    $con -> close();
     
-
-    <footer class="footer">
-        <p class="text__footer">Todos los Derechos reservados para The Cars</p>
-    </footer>
-    
-</body>
-</html>
+    echo '
+    </body>
+    </html>
+    ';   
+?>

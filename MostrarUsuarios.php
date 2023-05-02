@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+    include 'Conexion.php';
+    echo '
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,37 +29,38 @@
                 <a href="Ubicacion.html">Ubicación</a>
                 <a href="Registro.html">Registro</a>
                 <a href="Login.html">Login</a>
-                
             </section>
         </nav>
     </div>
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="ProductosAdministrador.html">Administrador</a>
+            <a href="MostrarUsuarios.php">Administrador</a>
             <a href="Agregar.html">Agregar</a>
             <a href="Eliminar.html">Eliminar</a>
             <a href="Modificar.html">Modificar</a>
             <a href="Buscar.html">Buscar</a>
         </nav>
     </div>
+    
 
 </head>
+
 <body>
 
     <main class="contenedor">
-        <h2 class="centrar-texto">Eliminar</h2>
+        <h2 class="centrar-texto">Bienvenido Administrador</h2>
 
         <div class="Administrador">  
             
             <form class="formulario__usuario">
                 <fieldset>
-                    <legend>Eliminar Productos</legend>
+                    <legend>Buscar Usuario</legend>
         
                     <div class="contenedor-campos">
                         <div class="campo">
-                            <label>Producto</label>
-                            <input class="input-text" type="text" type="text" placeholder="Correo">
+                            <label>ID, Nombre o Correo</label>
+                            <input class="input-text" type="text" name="nombre" placeholder="Atributo">
                         </div>
 
                         <div class="alinear-derecha flex">
@@ -68,41 +71,45 @@
             </form>
         </div>
 
+    </main>
+    ';  
+
+
+    $sql = "SELECT id, nombre, correo, password, telefono, direccion FROM usuario";
+    $result = $con ->query($sql);
+
+    if($result -> num_rows > 0){
+        echo "
+        
         <table>
             <caption>Usuarios</caption>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
-                <th>Marca</th>
-                <th>Descripcion</th>
-                <th>Tipo</th>
-                <th>Stock</th>
-                <th>Imagen</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Civic 2022</td>
-                <td>Honda</td>
-                <td>Esta es un auto que...</td>
-                <td>Sedan</td>
-                <td>2</td>
-                <td><img src="img/1Honda-Civic..jpg" alt=""></td>
-            </tr>
-            <tr>
-        
-            </tr>
-            <tr>
+                <th>Correo</th>
+                <th>Contraseña</th>
+                <th>Teléfono</th>
+                <th>Dirección</th>
+            </tr>"
+        ;
+        while($row = $result ->fetch_assoc()){
+            echo "<tr>";
+                echo "<td>".$row["id"]."</td>";
+                echo "<td>".$row["nombre"]."</td>"; 
+                echo "<td>".$row["correo"]."</td>"; 
+                echo "<td>".$row["password"]."</td>"; 
+                echo "<td>".$row["telefono"]."</td>"; 
+                echo "<td>".$row["direccion"]."</td>";  
+            echo "</tr>";
+        }
+    }else{
+        echo "0 results";
+    }
 
-            </tr>
-        </table>
-    </main>
-
-
+    $con -> close();
     
-
-    <footer class="footer">
-        <p class="text__footer">Todos los Derechos reservados para The Cars</p>
-    </footer>
-    
-</body>
-</html>
+    echo '
+    </body>
+    </html>
+    ';   
+?>
