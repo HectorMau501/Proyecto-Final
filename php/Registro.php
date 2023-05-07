@@ -14,7 +14,7 @@ values (0,'$nombre', '$correo', '$contrasena', '$telefono', '$direccion')");
 
 
 if($sql){
-    header("location:Home.html");
+    header("location:/Proyecto Final/html/Home.html");
 }
 else{
     echo " Usuario no agregado";

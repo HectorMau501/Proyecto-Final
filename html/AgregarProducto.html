@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="/Proyecto Final/css/StylesAdministrador.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
+
+   
+        <div class="nav-bg">
+            <nav class="navegacion-principal contenedor">
+                <section class="nav__izquierda">
+                    <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
+                </section>
+                <section class="nav__derecha">
+                    <a href="/Proyecto Final/php/MostrarUsuario.php">Mostrar Usuarios</a>
+                    <a href="AgregarUsuario.html">Agregar</a>
+                    <a href="">Eliminar</a>
+                    <a href="">Modificar</a>
+                </section>
+            </nav>
+        </div>
+    
+        <div class="nav-marcas">
+            <nav class="navegacion-marcas contenedor">
+                <a href="/Proyecto Final/php/MostrarProducto.php">Mostrar Producto</a>
+                <a href="AgregarProducto.html">Agregar</a>
+                <a href="Eliminar.html">Eliminar</a>
+                <a href="Modificar.html">Modificar</a>
+            </nav>
+        </div>
+
+</head>
+<body>
+
+    <main class="contenedor">
+        <h2 class="centrar-texto">Bienvenido Administrador</h2>
+        <h3 class="centrar-texto">Agregar Productos</h3>
+
+        <div class="Agregar">             
+            <form class="formulario__usuario" method="post" action="/Proyecto Final/php/AgregarProducto.php">
+                <fieldset>
+                    <legend>Llena los Campos para Agregar un nuevo Producto</legend>
+        
+                    <div class="contenedor-campos">
+                        <div class="campo">
+                            <label>Nombre</label>
+                            <input class="input-text" type="text" name="nombre" placeholder="Nombre">
+                        </div>
+
+                        <div class="campo">
+                            <label for="Marcas">Marca</label>
+                            <input class="input-text" type="text" name="marca" list="opciones_marcas" placeholder="Seleccione una opción de la lista">
+                            <datalist id="opciones_marcas">
+                                <option  value="Honda">
+                                <option  value="Nissan">
+                                <option  value="Ford"> 
+                                <option  value="Chevrolet">       
+                            </datalist>
+                        </div>
+ 
+                        <div class="campo">
+                            <label>Precio</label>
+                            <input class="input-text" type="text" name="precio" placeholder="Precio">
+                        </div>
+
+                        <div class="campo">
+                            <label for="Tipo">Tipo</label>
+                            <input class="input-text" type="text" name="tipo" list="opciones_tipos" placeholder="Seleccione una opción de la lista">
+                            <datalist id="opciones_tipos">
+                                <option  value="Sedan">
+                                <option  value="Camionetas">
+                                <option  value="Deportivos"> 
+                                <option  value="Hatchback">       
+                            </datalist>
+                        </div>
+
+                        <div class="campo">
+                            <label>Descripción</label>
+                            <textarea class="input-text" id="" name="descripcion" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="campo">
+                            <label>URL de la Imagen</label>
+                            <input class="input-text" type="text" name="imagen" placeholder="URL">
+                        </div>
+
+                        <div class="alinear-derecha flex">
+                            <button class="button button_move" type="submit" value="Iniciar Sesión">Agregar Nuevo Producto</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+       </div>
+    </main>
+
+    <footer class="footer">
+        <p class="text__footer">Todos los Derechos reservados para The Cars</p>
+    </footer>
+    
+</body>
+</html>

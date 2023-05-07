@@ -10,13 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link rel="stylesheet" href="/Proyecto Final/css/Styles.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
-    <link rel="stylesheet" href="css/StylesAdministrador.css">
 
-   
+</head>
+<body>
+
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
@@ -27,82 +31,52 @@
                 <a href="Ubicacion.html">Ubicación</a>
                 <a href="Registro.html">Registro</a>
                 <a href="Login.html">Login</a>
-                
             </section>
         </nav>
     </div>
-
-    <div class="nav-marcas">
-        <nav class="navegacion-marcas contenedor">
-            <a href="ProductosAdministrador.html">Administrador</a>
-            <a href="Agregar.html">Agregar</a>
-            <a href="Eliminar.html">Eliminar</a>
-            <a href="Modificar.html">Modificar</a>
-            <a href="Buscar.html">Buscar</a>
-        </nav>
-    </div>
-
-</head>
-<body>
-
-    <main class="contenedor">
-        <h2 class="centrar-texto">Eliminar</h2>
-
-        <div class="Administrador">  
-            
-            <form class="formulario__usuario">
+    
+    <main class="Contenido">
+       
+        <div class="login">  
+            <img class="auto__imagen--login" src="/Proyecto Final/img/Login.jpg" alt="Imagen del Login">
+            <!--            <a href="https://unsplash.com/@alonly?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"></a><a href="https://unsplash.com/es/fotos/fP1jFz9FYuI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"></a>-->
+            <form class="formulario__login" method="post" action="/Proyecto Final/php/Login.php">
                 <fieldset>
-                    <legend>Eliminar Productos</legend>
+                    <legend>Iniciar Sesión</legend>
         
                     <div class="contenedor-campos">
                         <div class="campo">
-                            <label>Producto</label>
-                            <input class="input-text" type="text" type="text" placeholder="Correo">
+                            <label>Correo</label>
+                            <input class="input-text" type="email" name="correo" placeholder="Correo">
+                        </div>
+        
+                        <div class="campo">
+                            <label>Contraseña</label>
+                            <input class="input-text" type="password" name="password" placeholder="Contraseña">
                         </div>
 
                         <div class="alinear-derecha flex">
-                            <button class="button button_move" class="input-text" type="submit" name="Login" value="Iniciar Sesión">Buscar Usuario</button>
+                            <button class="button button_move--Login" class="input-text" type="submit" name="login" value="Iniciar Sesión">Iniciar Sesión</button>
                         </div>
+
+                        <div class="campo_contraseña">
+                            <a class="contraseña_link" href="">¿Olvidaste tu contraseña?</a>
+                        </div>
+
+                        <div class="campo_registrarse">
+                            <h3>¿No tienes una cuenta?</h3>
+                            <a class="registrar_link" href="Registro.html">Registrarse</a>
+                        </div>
+
                     </div>
                 </fieldset>
             </form>
         </div>
-
-        <table>
-            <caption>Usuarios</caption>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Marca</th>
-                <th>Descripcion</th>
-                <th>Tipo</th>
-                <th>Stock</th>
-                <th>Imagen</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>Civic 2022</td>
-                <td>Honda</td>
-                <td>Esta es un auto que...</td>
-                <td>Sedan</td>
-                <td>2</td>
-                <td><img src="img/1Honda-Civic..jpg" alt=""></td>
-            </tr>
-            <tr>
-        
-            </tr>
-            <tr>
-
-            </tr>
-        </table>
     </main>
-
-
-    
 
     <footer class="footer">
         <p class="text__footer">Todos los Derechos reservados para The Cars</p>
     </footer>
-    
+
 </body>
 </html>

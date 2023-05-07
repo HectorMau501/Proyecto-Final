@@ -515,11 +515,34 @@ text-align: center;
 }
 
                             /**Administrador**/
+   
+    /*Login de Administrador*/   
+
+.login_administrador{
+    background-color: var(--oscuro);
+    width: min(40rem , 100%);
+    margin: 5rem auto;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
+}  
+
+.login_administrador fieldset{
+    border: none;
+}
+
+.login_administrador Legend{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--blanco);
+}                         
 
 .formulario__usuario{
     background-color: var(--oscuro);
     width: min(70rem , 100%);
-    margin: 0 auto;
+    margin: 5rem auto;
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);
@@ -559,7 +582,6 @@ th{
     border-bottom: 0.2rem solid black;
     border-collapse:separate;
     empty-cells:hide;
-    border-spacing: 1rem;
     caption-side: bottom;
 }
 
@@ -569,10 +591,9 @@ td{
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    padding: 1rem 3rem;
+    padding: 1rem 1rem;
     border-collapse:separate;
     empty-cells:hide;
-    border-spacing: 1rem;
     caption-side: bottom;
 }
 

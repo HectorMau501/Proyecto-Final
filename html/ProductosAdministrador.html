@@ -14,7 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="/css/StylesAdministrador.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/StylesAdministrador.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
    
     <div class="nav-bg">
@@ -33,11 +34,10 @@
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="ProductosAdministrador.html">Administrador</a>
+            <a href="ProductosAdministrador.html">Mostrar</a>
             <a href="Agregar.html">Agregar</a>
             <a href="Eliminar.html">Eliminar</a>
             <a href="Modificar.html">Modificar</a>
-            <a href="Buscar.html">Buscar</a>
         </nav>
     </div>
 
@@ -47,8 +47,7 @@
     <main class="contenedor">
         <h2 class="centrar-texto">Bienvenido Administrador</h2>
 
-        <div class="Administrador">  
-            
+        <div class="usuarios">       
             <form class="formulario__usuario">
                 <fieldset>
                     <legend>Buscar Usuario</legend>
@@ -59,18 +58,12 @@
                             <input class="input-text" type="text" name="nombre" placeholder="Atributo">
                         </div>
 
-                        <div class="campo">
-                            <label>Objeto</label>
-                            <input class="input-text" type="text" name="Objeto" placeholder="Objeto">
-                        </div>
-
                         <div class="alinear-derecha flex">
                             <button class="button button_move" class="input-text" type="submit" name="Login" value="Iniciar Sesión">Buscar Usuario</button>
                         </div>
                     </div>
                 </fieldset>
             </form>
-        </div>
 
         <table>
             <caption>Usuarios</caption>
@@ -101,11 +94,68 @@
                 <td>20%</td>
             </tr>
         </table>
-    </main>
+</div>
 
+<div class="usuarios">       
+    <form class="formulario__usuario">
+        <fieldset>
+            <legend>Buscar Producto</legend>
 
-    
+            <div class="contenedor-campos">
+                <div class="campo">
+                    <label>ID, Nombre, Marca o Tipo</label>
+                    <input class="input-text" type="text" name="nombre" placeholder="Atributo">
+                </div>
 
+                <div class="alinear-derecha flex">
+                    <button class="button button_move" class="input-text" type="submit" value="Iniciar Sesión">Buscar Producto</button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+        <table>
+            <caption>Productos</caption>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Marca</th>
+                <th>Precio</th>
+                <th>Descripcion</th>
+                <th>Tipo</th>
+                <th>Stock</th>
+                <th>Imagen</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Civic 2022</td>
+                <td>Honda</td>
+                <td>$500,000</td>
+                <td>                        Honda Civic no es para cualquier conductor. Muestra un diseño aerodinámico y 
+                    sin saturaciones, un diseño que da de qué hablar. Sus dimensiones como su frente 
+                    ahora más alargado, le suman presencia consiguiendo una silueta más robusta y 
+                    deportiva.</td>
+                <td>Sedan</td>
+                <td>2</td>
+                <td><img src="/Proyecto Final/img/1Honda-Civic..jpg" alt=""></td>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>Civic 2022</td>
+                <td>Honda</td>
+                <td>$500,000</td>
+                <td>Esta es un auto que...</td>
+                <td>Sedan</td>
+                <td>2</td>
+                <td><img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/199431-honda-muestra-su-renovado-civic-type-r-en-el-tokyo-auto-salon-2020-1578660923.jpg" alt=""></td>
+            </tr>
+
+            <tr>
+
+            </tr>
+        </table>
+    </div>
+</main>   
     <footer class="footer">
         <p class="text__footer">Todos los Derechos reservados para The Cars</p>
     </footer>

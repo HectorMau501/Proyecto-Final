@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri&family=Kaushan+Script&family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="/Proyecto Final/css/StylesAdministrador.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
+
+   
+        <div class="nav-bg">
+            <nav class="navegacion-principal contenedor">
+                <section class="nav__izquierda">
+                    <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
+                </section>
+                <section class="nav__derecha">
+                    <a href="/Proyecto Final/php/MostrarUsuario.php">Mostrar Usuarios</a>
+                    <a href="AgregarUsuario.html">Agregar</a>
+                    <a href="">Eliminar</a>
+                    <a href="">Modificar</a>
+                </section>
+            </nav>
+        </div>
+    
+        <div class="nav-marcas">
+            <nav class="navegacion-marcas contenedor">
+                <a href="/Proyecto Final/php/MostrarProducto.php">Mostrar Producto</a>
+                <a href="AgregarProducto.html">Agregar</a>
+                <a href="Eliminar.html">Eliminar</a>
+                <a href="Modificar.html">Modificar</a>
+            </nav>
+        </div>
+
+</head>
+<body>
+
+    <main class="contenedor">
+        <h2 class="centrar-texto">Bienvenido Administrador</h2>
+        <h3 class="centrar-texto">Agregar Usuarios</h3>
+
+        <div class="Agregar">             
+            <form class="formulario__usuario" method="POST" action="/Proyecto Final/php/Registro.php">
+                <fieldset>
+                    <legend>Crear una Cuenta</legend>
+        
+                    <div class="contenedor-campos">
+                        <disv class="campo">
+                            <label for="nombre">Nombre</label>
+                            <input class="input-text" type="text" name="nombre" id="nombre" type="text" placeholder="Nombre">
+                        </disv>
+        
+                        <div class="campo">
+                            <label for="correo">Correo</label>
+                            <input class="input-text" type="email" name="correo" id="correo"  type="text" placeholder="Correo">
+                        </div>
+        
+                        <div class="campo">
+                            <label for="contrasena">Contraseña</label>
+                            <input class="input-text" type="password" name="password" id="password" type="text" placeholder="password">
+                        </div>
+
+                        <div class="campo">
+                            <label for="direccion">Dirección</label>
+                            <input class="input-text" type="text"  name="direccion" type="text" id="direccion" placeholder="Dirección">
+                        </div>
+
+                        <div class="campo">
+                            <label for="telefono">Teléfono</label>
+                            <input class="input-text" type="number" name="telefono"  id="telefono" type="text" placeholder="Teléfono">
+                        </div>
+
+                        <div class="alinear-derecha flex">
+                            <button class="button button_move" class="input-text" type="submit" name="Registro" value="Crear Cuenta">Crear Cuenta</button>
+                        </div>
+
+                    </div>
+                </fieldset>
+            </form>
+       </div>
+    </main>
+
+    <footer class="footer">
+        <p class="text__footer">Todos los Derechos reservados para The Cars</p>
+    </footer>
+    
+</body>
+</html>
