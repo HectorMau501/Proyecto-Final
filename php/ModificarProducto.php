@@ -18,15 +18,15 @@
     <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
    
-        <div class="nav-bg">
+    <div class="nav-bg">
             <nav class="navegacion-principal contenedor">
                 <section class="nav__izquierda">
                     <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
                 </section>
                 <section class="nav__derecha">
                     <a href="/Proyecto Final/php/MostrarUsuario.php">Usuarios</a>
-                    <a href="AgregarUsuario.html">Agregar</a>
-                    <a href="/Proyecto Final/php/ModificarUsuario.php">Modificar y Eliminar</a>
+                    <a href="/Proyecto Final/html/AgregarUsuario.html">Agregar</a>
+                    <a href="ModificarUsuario.php">Modificar y Eliminar</a>
                 </section>
             </nav>
         </div>
@@ -34,8 +34,8 @@
         <div class="nav-marcas">
             <nav class="navegacion-marcas contenedor">
                 <a href="/Proyecto Final/php/MostrarProducto.php">Producto</a>
-                <a href="AgregarProducto.html">Agregar</a>
-                <a href="/Proyecto Final/php/ModificarProducto.php">Modificar y Eliminar</a>
+                <a href="/Proyecto Final/html/AgregarProducto.html">Agregar</a>
+                <a href="ModificarProducto.php">Modificar y Eliminar</a>
             </nav>
         </div>
 
@@ -44,14 +44,20 @@
 
     <main class="contenedor">
         <h2 class="centrar-texto">Bienvenido Administrador</h2>
-        <h3 class="centrar-texto">Agregar Productos</h3>
+        <h3 class="centrar-texto">Modificar y Eliminar Productos</h3>
 
         <div class="Agregar">             
-            <form class="formulario__usuario" method="post" action="/Proyecto Final/php/AgregarProducto.php">
+            <form class="formulario__usuario" method="post" action="OperacionesProducto.php">
                 <fieldset>
-                    <legend>Llena los Campos para Agregar un nuevo Producto</legend>
-        
+                    <legend class="justificar-texto">Modifica poniendo el "ID" del producto junto con los nuevos datos.</legend>
+                    <legend class="justificar-texto">Elimina solamente poniendo el "ID" del producto.</legend>
+
                     <div class="contenedor-campos">
+                    <div class="campo">
+                            <label>ID</label>
+                            <input class="input-text" type="text" name="id" placeholder="id">
+                        </div>
+
                         <div class="campo">
                             <label>Nombre</label>
                             <input class="input-text" type="text" name="nombre" placeholder="Nombre">
@@ -93,13 +99,47 @@
                             <label>URL de la Imagen</label>
                             <input class="input-text" type="text" name="imagen" placeholder="URL">
                         </div>
+    
 
                         <div class="alinear-derecha flex">
-                            <button class="button button_move" type="submit" value="Iniciar Sesión">Agregar Nuevo Producto</button>
+                            <input class="button button_eliminar button_move" type="submit" value="Eliminar" name="eliminar"></input>
+                            <input class="button button_move" type="submit" value="Modificar" name="modificar"></input>
                         </div>
                     </div>
                 </fieldset>
             </form>
+            <table>
+        <caption>Productos</caption>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+            <th>Stock</th>
+        </tr>
+ 
+<?php
+
+include 'BusquedaProducto.php';
+
+    while($row = mysqli_fetch_array($sql_query)){  ?>
+        <tr>
+            <td><?= $row["id"] ?></td>
+            <td><?= $row["nombre"] ?></td>
+            <td><?= $row["marca"] ?></td>
+            <td><?= $row["precio"] ?></td>
+            <td><?= $row["tipo"] ?></td>
+            <td><?= $row["descripcion"] ?></td>
+            <td><img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto"></td>
+            <td><?= $row["stock"] ?></td>
+        </tr>    
+
+<?php  } ?>
+
+                </table>
        </div>
     </main>
 

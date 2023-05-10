@@ -1,13 +1,6 @@
 <?php
 
-//Estas son las variables para conectar a tu base de datos
-$server = "localhost";
-$database = "VentaAutomoviles";
-$username = "root";
-$password = "";
-
-//Aqui se traen las variables para poderlas enviar
-$con = mysqli_connect($server, $username, $password, $database);
+include 'Conexion.php';
 
 //Por si tenemos errores en la conexion
 if (!$con) {
@@ -23,8 +16,6 @@ $resultado = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
 //Cerrar conexión
 mysqli_close($con);
-
-
 ?>
 
 
@@ -57,20 +48,20 @@ mysqli_close($con);
                 <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="Productos.html">Productos</a>
-                <a href="Ubicacion.html">Ubicación</a>
-                <a href="Registro.html">Registro</a>
-                <a href="Login.html">Login</a>
+                <a href="/Proyecto Final/html/Productos.html">Productos</a>
+                <a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a>
+                <a href="/Proyecto Final/html/Registro.html">Registro</a>
+                <a href="/Proyecto Final/html/Login.html">Login</a>
             </section>
         </nav>
     </div>
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="Honda.html">Honda</a>
-            <a href="Nissan.html">Nissan</a>
-            <a href="Ford.html">Ford</a>
-            <a href="Chevrolet.html">Chevrolet</a>
+            <a href="Honda.php">Honda</a>
+            <a href="Nissan.php">Nissan</a>
+            <a href="Ford.php">Ford</a>
+            <a href="Chevrolet.php">Chevrolet</a>
         </nav>
     </div>
 
@@ -80,7 +71,8 @@ mysqli_close($con);
         <h2 class="centrar-texto">Honda</h2>  
         <?php 
 
-        foreach($resultado as $row){ ?>
+        foreach($resultado as $row){ 
+        ?>
         <div class="producto">
             <div class="producto__imagen">
                 <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
@@ -97,7 +89,7 @@ mysqli_close($con);
             </p>
                 <p class="producto__descripcion">
                     <?php echo $row['descripcion']; ?>
-                </p>
+            </p>
                 <a href="">
                     <div class="alinear-derecha flex">
                         <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>

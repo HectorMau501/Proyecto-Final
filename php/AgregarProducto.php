@@ -15,4 +15,11 @@ $sql = mysqli_query($con, "INSERT INTO producto (id,nombre,marca,precio,tipo,des
 values (0,'$nombre', '$marca', '$precio', '$tipo', '$descripcion','$imagen',0)");
 
 
+if($sql){
+    header("location:/Proyecto Final/html/AgregarProducto.html");
+}
+else{
+    echo " Usuario no agregado";
+}
+
 ?>

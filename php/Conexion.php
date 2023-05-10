@@ -12,5 +12,8 @@ $password="";
     $con = mysqli_connect($server,$username,$password,$database);
 
     //Por si tenemos errores en la conexion
+if(!$con){
+    die("No hay conexión".mysqli_connect_error());
+}    
 
 ?>
