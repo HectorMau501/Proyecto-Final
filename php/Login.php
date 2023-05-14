@@ -21,8 +21,8 @@ and password = '".$contrasena."'");
 $nr = mysqli_num_rows($query);
 
 if($nr == 1){
-    header("location:/Proyecto Final/html/HomeUsuario.html");
-    //echo "Bienvenido" .$correo;
+    header("location:/Proyecto Final/cliente/HomeUsuario.php");
+    echo "Bienvenido" .$correo;
 }
 else if($nr == 0)
     echo "No ingreso usuario, vuelvalo a intentar";

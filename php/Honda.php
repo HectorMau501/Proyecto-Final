@@ -45,10 +45,10 @@ mysqli_close($con);
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
+                <a class="eslogan" href="Home.html">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/html/Productos.html">Productos</a>
+                <a href="/Proyecto Final/php/Productos.php">Productos</a>
                 <a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a>
                 <a href="/Proyecto Final/html/Registro.html">Registro</a>
                 <a href="/Proyecto Final/html/Login.html">Login</a>
@@ -58,10 +58,10 @@ mysqli_close($con);
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="Honda.php">Honda</a>
-            <a href="Nissan.php">Nissan</a>
-            <a href="Ford.php">Ford</a>
-            <a href="Chevrolet.php">Chevrolet</a>
+            <a href="/Proyecto Final/php/Honda.php">Honda</a>
+            <a href="/Proyecto Final/php/Nissan.php">Nissan</a>
+            <a href="/Proyecto Final/php/Ford.php">Ford</a>
+            <a href="/Proyecto Final/php/Chevrolet.php">Chevrolet</a>
         </nav>
     </div>
 
@@ -69,35 +69,42 @@ mysqli_close($con);
     <main class="contenedor">
         
         <h2 class="centrar-texto">Honda</h2>  
+        
+       
+        
         <?php 
 
         foreach($resultado as $row){ 
         ?>
-        <div class="producto">
-            <div class="producto__imagen">
-                <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
-            </div>
-            <div class="producto__informacion">
-                <h3 class="no-margin producto__nombre"><?php echo $row['marca']; ?> 
-                    <span class="producto__bold"><?php echo $row['nombre']; ?></span>
-                </h3>
-                <p class="producto__bold">Estrena desde:
-                    <span class="producto__precio">$<?php echo $row['precio']; ?></span>
+        <form action="formulario" method="POST" action="Carrito.php">
+            <div class="producto">
+                <div class="producto__imagen">
+                    <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
+                </div>
+                <div class="producto__informacion">
+                    <h3 class="no-margin producto__nombre"><?php echo $row['marca']; ?> 
+                        <span class="producto__bold"><?php echo $row['nombre']; ?></span>
+                    </h3>
+                    <p class="producto__bold">Estrena desde:
+                        <span class="producto__precio">$<?php echo $row['precio']; ?></span>
+                    </p>
+                    <p class="producto__bold">Tipo:
+                        <span class="producto__precio"><?php echo $row['tipo']; ?></span>
                 </p>
-                <p class="producto__bold">Tipo:
-                    <span class="producto__precio"><?php echo $row['tipo']; ?></span>
-            </p>
-                <p class="producto__descripcion">
-                    <?php echo $row['descripcion']; ?>
-            </p>
-                <a href="">
-                    <div class="alinear-derecha flex">
-                        <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>
-                    </div>
-                </a>
-            </div>          
-        </div> 
-        <?php } ?>
+                    <p class="producto__descripcion">
+                        <?php echo $row['descripcion']; ?>
+                </p>
+
+                    <a href="">
+                        <div class="alinear-derecha flex">
+                            <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>
+                        </div>
+                    </a>
+                </div>          
+            </div> 
+        </form>    
+        <?php   
+                } ?>
     </main>    
 
     <footer class="footer">

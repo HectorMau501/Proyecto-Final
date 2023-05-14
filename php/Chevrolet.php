@@ -44,10 +44,10 @@ mysqli_close($con);
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
+                <a class="eslogan" href="Home.html">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/html/Productos.html">Productos</a>
+                <a href="/Proyecto Final/php/Productos.php">Productos</a>
                 <a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a>
                 <a href="/Proyecto Final/html/Registro.html">Registro</a>
                 <a href="/Proyecto Final/html/Login.html">Login</a>
@@ -57,10 +57,10 @@ mysqli_close($con);
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="Honda.php">Honda</a>
-            <a href="Nissan.php">Nissan</a>
-            <a href="Ford.php">Ford</a>
-            <a href="Chevrolet.php">Chevrolet</a>
+            <a href="/Proyecto Final/php/Honda.php">Honda</a>
+            <a href="/Proyecto Final/php/Nissan.php">Nissan</a>
+            <a href="/Proyecto Final/php/Ford.php">Ford</a>
+            <a href="/Proyecto Final/php/Chevrolet.php">Chevrolet</a>
         </nav>
     </div>
 

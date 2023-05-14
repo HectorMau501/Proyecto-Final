@@ -1,20 +1,18 @@
 <?php
 
-include 'Conexion.php';
+include '../php/Conexion.php';
 
-//Por si tenemos errores en la conexion
-if (!$con) {
-    die("Conexión fallida: " . mysqli_connect_error());
-}
+if(isset($_GET['id'])){
+    $resultado = $con -> query("SELECT * FROM producto WHERE id =" .$_GET['id']) or die($con->error);
+    if(mysqli_num_rows($resultado) > 0){
+        $fila = mysqli_fetch_row($resultado);
+    }else{
+        header("Location: ./Productos.php");
+    }
+}   else{
+    header("Location: ./Productos.php");
+    }
 
-//Consulta
-$sql = "SELECT id, nombre, marca, precio, tipo, descripcion,
-imagen FROM producto WHERE marca = 'Nissan'";
-$resultado = mysqli_query($con, $sql);
-
-$resultado = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
-
-mysqli_close($con);
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +31,7 @@ mysqli_close($con);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="/Proyecto Final/css/Styles.css">
+    <link rel="stylesheet" href="../css/StylesUsuario.css">
     <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
 
@@ -43,13 +41,14 @@ mysqli_close($con);
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="Home.html">Venta de Automoviles</a>
+                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/php/Productos.php">Productos</a>
-                <a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a>
-                <a href="/Proyecto Final/html/Registro.html">Registro</a>
-                <a href="/Proyecto Final/html/Login.html">Login</a>
+                <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
+                <a href="Ubicacion.html">Ubicación</a>
+                <a href="Registro.html">Registro</a>
+                <a href="Login.html">Login</a>
+                <a href="Carrito.php">Carrito</a>
             </section>
         </nav>
     </div>
@@ -63,35 +62,33 @@ mysqli_close($con);
         </nav>
     </div>
 
-
     <main class="contenedor">
-        
-        <h2 class="centrar-texto">Nissan</h2>
+          
         <?php
-        foreach($resultado as $row){  ?>     
+        foreach($resultado as $row){  ?>    
+                <h2 class="centrar-texto producto__nombre"><?php echo $fila['2']; ?> 
+                    <span class="producto__bold"><?php echo $fila['1']; ?></span>
+                </h2> 
         <div class="producto">
                 <div class="producto__imagen">
-                    <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
-                </div>
+                    <img src="/Proyecto Final/img/<?php echo $fila['6']; ?>" alt="<?php echo $fila['1']; ?>">
+                </div>    
             <div class="producto__informacion">
-                    <h3 class="no-margin producto__nombre"><?php echo $row['marca']; ?> 
-                        <span class="producto__bold"><?php echo $row['nombre']; ?></span>
-                    </h3>
 
                     <p class="producto__bold">Estrena desde:
-                         <span class="producto__precio">$<?php echo $row['precio']; ?></span>
+                         <span class="producto__precio">$<?php echo $fila['3']; ?></span>
                     </p>
 
                     <p class="producto__bold">Tipo:
-                        <span class="producto__precio"><?php echo $row['tipo']; ?></span>
+                        <span class="producto__precio"><?php echo $fila['4']; ?></span>
                    </p>
 
                     <p class="producto__descripcion">
                         <?php echo $row['descripcion']; ?>
-                    </p>
-                <a href="">
+                    </p>   
+                <a href="Carrito.php?id=<?php echo $fila['0']; ?>">
                     <div class="alinear-derecha flex">
-                        <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>
+                        <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Añadir</button>
                     </div>
                 </a>
             </div>          

@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="/Proyecto Final/css/Styles.css">
+    <link rel="stylesheet" href="../css/StylesUsuario.css">
     <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
 
@@ -23,16 +26,19 @@
 
 <body>
 
+
+
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="Home.html">Venta de Automoviles</a>
+                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="Productos.html">Productos</a>
+                <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
                 <a href="Ubicacion.html">Ubicación</a>
                 <a href="Registro.html">Registro</a>
                 <a href="Login.html">Login</a>
+                <a href="Carrito.php">Carrito</a>
             </section>
         </nav>
     </div>

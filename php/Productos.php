@@ -9,7 +9,7 @@ if (!$con) {
 
 //Consulta
 $sql = "SELECT id, nombre, marca, precio, tipo, descripcion,
-imagen FROM producto WHERE marca = 'Nissan'";
+imagen FROM producto";
 $resultado = mysqli_query($con, $sql);
 
 $resultado = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
@@ -63,10 +63,11 @@ mysqli_close($con);
         </nav>
     </div>
 
+    <h1 class="eslogan">Si hay algo que me cause emoción, es mi auto bajo en acción</h1>
 
     <main class="contenedor">
         
-        <h2 class="centrar-texto">Nissan</h2>
+        <h2 class="centrar-texto">Nuestros Productos</h2>  
         <?php
         foreach($resultado as $row){  ?>     
         <div class="producto">

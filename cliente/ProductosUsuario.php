@@ -1,6 +1,6 @@
 <?php
 
-include 'Conexion.php';
+include '../php/Conexion.php';
 
 //Por si tenemos errores en la conexion
 if (!$con) {
@@ -9,12 +9,13 @@ if (!$con) {
 
 //Consulta
 $sql = "SELECT id, nombre, marca, precio, tipo, descripcion,
-imagen FROM producto WHERE marca = 'Nissan'";
+imagen FROM producto";
 $resultado = mysqli_query($con, $sql);
 
 $resultado = mysqli_fetch_all($resultado, MYSQLI_ASSOC);
 
 mysqli_close($con);
+
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +34,7 @@ mysqli_close($con);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="/Proyecto Final/css/Styles.css">
+    <link rel="stylesheet" href="../css/StylesUsuario.css">
     <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
 
@@ -43,13 +44,14 @@ mysqli_close($con);
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="Home.html">Venta de Automoviles</a>
+                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/php/Productos.php">Productos</a>
-                <a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a>
-                <a href="/Proyecto Final/html/Registro.html">Registro</a>
-                <a href="/Proyecto Final/html/Login.html">Login</a>
+                <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
+                <a href="Ubicacion.html">Ubicación</a>
+                <a href="Registro.html">Registro</a>
+                <a href="Login.html">Login</a>
+                <a href="Carrito.php">Carrito</a>
             </section>
         </nav>
     </div>
@@ -63,16 +65,19 @@ mysqli_close($con);
         </nav>
     </div>
 
+    <h1 class="eslogan">Si hay algo que me cause emoción, es mi auto bajo en acción</h1>
 
     <main class="contenedor">
         
-        <h2 class="centrar-texto">Nissan</h2>
+        <h2 class="centrar-texto">Nuestros Productos</h2>  
         <?php
         foreach($resultado as $row){  ?>     
         <div class="producto">
+            <a href="shop-single.php?id=<?php echo $row['id']; ?>">
                 <div class="producto__imagen">
                     <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
                 </div>
+            </a>    
             <div class="producto__informacion">
                     <h3 class="no-margin producto__nombre"><?php echo $row['marca']; ?> 
                         <span class="producto__bold"><?php echo $row['nombre']; ?></span>
@@ -88,8 +93,8 @@ mysqli_close($con);
 
                     <p class="producto__descripcion">
                         <?php echo $row['descripcion']; ?>
-                    </p>
-                <a href="">
+                    </p>   
+                <a href="shop-single.php?id=<?php echo $row['id']; ?>">
                     <div class="alinear-derecha flex">
                         <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>
                     </div>
