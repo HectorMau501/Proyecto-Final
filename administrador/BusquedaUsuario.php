@@ -1,6 +1,6 @@
 <?php
 
-include 'Conexion.php';
+include "../php/Conexion.php";
 
 if(!isset($_POST['buscar'])){
 

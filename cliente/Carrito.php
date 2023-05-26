@@ -1,71 +1,25 @@
 <?php
-
+/*
 session_start();
 include '../php/Conexion.php';
 
-if(isset($_SESSION['carrito'])){
-        //Si existe buscamos que ya haya estado agregado ese producto
-        if(isset($_GET['id'])){
-            $arreglo = $_SESSION['carrito'];
-            $encontro = false;
-            $numero = 0;
-            for($i=0; $i<count($arreglo); $i++){
-                if($arreglo[$i]['Id'] == $_GET['id']){
-                    $encontro=true;
-                    $numero=$i;
-                }
-            }
-            if($encontro == true){
-                $arreglo[$numero]['Cantidad'] = $arreglo[$numero]['Cantidad'] + 1;
-                $_SESSION['carrito'] = $arreglo;
-            }else{
-                $nombre = ""; 
-                $marca = "";
-                $precio = "";
-                $imagen = "";
-                $res = $con->query('select * from producto where id='.$_GET['id'])or die($con->error);
-                $fila = mysqli_fetch_row($res);
-                $nombre=$fila[1];
-                $marca = $fila[2];
-                $precio =$fila[3];
-                $imagen = $fila[6];
-                $arregloNuevo = array(
-                    'Id' => $_GET['id'],
-                    'Nombre' => $nombre,
-                    'Marca' => $marca,
-                    'Precio' => $precio,
-                    'Imagen' => $imagen,
-                    'Cantidad' => 1
-                );
-                array_push($arreglo, $arregloNuevo);
-                $_SESSION['carrito']=$arreglo;
-            }
-        }
-    }else{
-        //creamos la variable de sesion
-        if(isset($_GET['id'])){
-            $nombre = ""; 
-            $marca = "";
-            $precio = "";
-            $imagen = "";
-            $res = $con->query('select * from producto where id='.$_GET['id'])or die($con->error);
-            $fila = mysqli_fetch_row($res);
-            $nombre=$fila[1];
-            $marca = $fila[2];
-            $precio =$fila[3];
-            $imagen = $fila[6];
-            $arreglo[] = array(
-                'Id' => $_GET['id'],
-                'Nombre' => $nombre,
-                'Marca' => $marca,
-                'Precio' => $precio,
-                'Imagen' => $imagen,
-                'Cantidad' => 1
-            );
-            $_SESSION['carrito'] = $arreglo;
-        }
-    }
 
+if(!isset($_SESSION['carrito'])){
+    $_SESSION['carrito'] = array();
+}
+
+if(isset($_GET['id_producto'], $_GET['nombre_producto'], $_GET['precio_producto'], $_GET['imagen_producto'])){
+    $arregloCarrito = array(
+        'id_producto' => $_GET['id_producto'],
+        'nombre' => $_GET['nombre_producto'],
+        'precio' => $_GET['precio_producto'],
+        'imagen' => $_GET['imagen_producto'],
+        'cantidad' => 1
+    );
+    array_push($_SESSION['carrito'], $arregloCarrito);
+}
+
+*/
 ?>
 
 <!DOCTYPE html>
@@ -99,12 +53,20 @@ if(isset($_SESSION['carrito'])){
                 <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="Ubicacion.html">Ubicación</a>
-                <a href="Registro.html">Registro</a>
-                <a href="Login.html">Login</a>
+            <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
+                <a href="UbicacionCliente.html">Ubicación</a>
                 <a href="Carrito.php">Carrito</a>
+                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
             </section>
+        </nav>
+    </div>
+
+    <div class="nav-marcas">
+        <nav class="navegacion-marcas contenedor">
+            <a href="../cliente/HondaCliente.php">Honda</a>
+            <a href="../cliente/NissanCliente.php">Nissan</a>
+            <a href="../cliente/FordCliente.php">Ford</a>
+            <a href="../cliente/ChevroletCliente.php">Chevrolet</a>
         </nav>
     </div>
 
@@ -117,7 +79,6 @@ if(isset($_SESSION['carrito'])){
         <caption>Productos</caption>
             <tr>
                 <th>Nombre</th>
-                <th>Marca</th>
                 <th>Precio</th>
                 <th>Imagen</th>
                 <th>Cantidad</th>
@@ -126,73 +87,54 @@ if(isset($_SESSION['carrito'])){
             </tr>
 
 <?php
+
+
+
+include "../php/Conexion.php";
+
+// Obtener el id del usuario logueado
+session_start();
+$id_usuario = $_SESSION['id_usuario'];
+
+
+
+$sql_busqueda = "SELECT * FROM carrito WHERE id_usuario = '$id_usuario'";
+
+$sql_query = mysqli_query($con,$sql_busqueda);
+
+while($row = mysqli_fetch_array($sql_query)){?>
     
-    if(isset($_SESSION['carrito'])){
-        $arregloCarrito = $_SESSION['carrito'];
-        for($i=0 ; $i<count($arregloCarrito); $i++){
-    ?>        
-        <tr>
-            <td>
-                <?php echo $arregloCarrito[$i]['Nombre']; ?>
-            </td>
-            <td>
-                <?php echo $arregloCarrito[$i]['Marca']; ?>
-            </td>
-            <td>
-                $<?php echo $arregloCarrito[$i]['Precio']; ?>
-            </td>
-            <td>
-                <img src="/Proyecto Final/img/<?php echo $arregloCarrito[$i]['Imagen']; ?>" alt="">
-            </td>
-            <td>
-                <input class="input-text" type="text" name="tipo" list="opciones_tipos" value="<?php echo $arregloCarrito[$i]['Cantidad']; ?>" placeholder="Cantidad">
-                    <datalist id="opciones_tipos">
-                        <option  value="1">
-                        <option  value="2">
-                        <option  value="3">
-                        <option  value="4">
-                    </datalist>
-            </td>
-            <td>
-                <?php echo is_numeric($arregloCarrito[$i]['Precio']) ? '$' . $arregloCarrito[$i]['Precio'] * $arregloCarrito[$i]['Cantidad'] : 'Precio no válido'; ?>
-            </td>
+    <tr>
+         <td><?= $row["nombre_producto"] ?></td> 
+         <td>$<?= $row["precio_producto"] ?></td>
+         <td>
+         <div class="producto__imagen">
+            <img src="/Proyecto Final/img/<?php echo $row['imagen_producto']; ?>" alt="imagen auto">
+        </div>
+        </td>
+         <td><?= $row["cantidad"] ?></td> 
+         <td>$<?= $row["cantidad"]   *  $row["precio_producto"] ?></td>
+         <td>
+         <form action="eliminarCarrito.php" method="post">
+            <input type="hidden" name="id" value="<?= $row["id"] ?>">
+            <input class="button button_eliminar button_move" type="submit" value="Eliminar" name="eliminar">
+        </form>
+          
+        </td>
+ 
+     </tr>
 
-            <td>
-                <form action="/Proyecto Final/php/eliminarCarrito.php" method="post">
-                    <input type="hidden" name="id" value="<?php echo $arregloCarrito[$i]['Id']; ?>">
-                    <input type="submit" value="Eliminar">
-                </form>            
-            </td>
-
-        </tr>    
-
-    <?php }
-            } ?>
+<?php }
+?>  
     
+ 
         </table>
     </main>
     <footer class="footer">
         <p class="text__footer">Todos los Derechos reservados para The Cars</p>
     </footer>
 
-<script>
-    $(document).ready(function(){
-        $(".btnEliminar").click(function(event){
-            event.preventDefault();
-            var id = $(this).data('id');
-            
-            $.ajax({
-                method: 'POST',
-                url: '../php/eliminarCarrito.php',
-                data:{
-                    id:id
-                }
-            }).done(function(respuesta){
-                alert(respuesta);
-            });
-        });
-    });
-</script>
+
 
     </body>
 </html>

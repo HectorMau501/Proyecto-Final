@@ -18,24 +18,24 @@
     <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
    
-        <div class="nav-bg">
+    <div class="nav-bg">
             <nav class="navegacion-principal contenedor">
                 <section class="nav__izquierda">
                     <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
                 </section>
                 <section class="nav__derecha">
-                    <a href="/Proyecto Final/php/MostrarUsuario.php">Usuarios</a>
-                    <a href="AgregarUsuario.html">Agregar</a>
-                    <a href="/Proyecto Final/php/ModificarUsuario.php">Modificar y Eliminar</a>
+                    <a href="../administrador/MostrarUsuario.php">Usuarios</a>
+                    <a href="../administrador/AgregarUsuario.php">Agregar</a>
+                    <a href="../administrador/ModificarUsuario.php">Modificar y Eliminar</a>
                 </section>
             </nav>
         </div>
     
         <div class="nav-marcas">
             <nav class="navegacion-marcas contenedor">
-                <a href="/Proyecto Final/php/MostrarProducto.php">Producto</a>
-                <a href="AgregarProducto.html">Agregar</a>
-                <a href="/Proyecto Final/php/ModificarProducto.php">Modificar y Eliminar</a>
+                <a href="../administrador/MostrarProducto.php">Producto</a>
+                <a href="../administrador/AgregarProducto.php">Agregar</a>
+                <a href="../administrador/ModificarProducto.php">Modificar y Eliminar</a>
             </nav>
         </div>
 
@@ -47,7 +47,7 @@
         <h3 class="centrar-texto">Agregar Productos</h3>
 
         <div class="Agregar">             
-            <form class="formulario__usuario" method="post" action="/Proyecto Final/php/AgregarProducto.php">
+            <form class="formulario__usuario" method="post" action="../administrador/OperacionesProducto.php">
                 <fieldset>
                     <legend>Llena los Campos para Agregar un nuevo Producto</legend>
         
@@ -94,13 +94,50 @@
                             <input class="input-text" type="text" name="imagen" placeholder="URL">
                         </div>
 
+                        <div class="campo">
+                            <label>Stock</label>
+                            <input class="input-text" type="text" name="stock" placeholder="stock">
+                        </div>
+
                         <div class="alinear-derecha flex">
-                            <button class="button button_move" type="submit" value="Iniciar Sesión">Agregar Nuevo Producto</button>
+                            <!--Recuerda en el buttun poder el nombre isset que le diste para que realice esa funcion-->
+                            <input class="button button_move" type="submit" value="Agregar Nuevo Producto" name="agregar"></input>
                         </div>
                     </div>
                 </fieldset>
             </form>
        </div>
+       
+       <table>
+        <caption>Productos</caption>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>Precio</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Imagen</th>
+            <th>Stock</th>
+        </tr>
+<?php
+
+include 'BusquedaProducto.php';
+
+    while($row = mysqli_fetch_array($sql_query)){  ?>
+        <tr>
+            <td><?= $row["id"] ?></td>
+            <td><?= $row["nombre"] ?></td>
+            <td><?= $row["marca"] ?></td>
+            <td><?= $row["precio"] ?></td>
+            <td><?= $row["tipo"] ?></td>
+            <td><?= $row["descripcion"] ?></td>
+            <td><img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto"></td>
+            <td><?= $row["stock"] ?></td>
+        </tr>    
+
+<?php  } ?>
+     </table>
     </main>
 
     <footer class="footer">

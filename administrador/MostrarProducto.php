@@ -24,18 +24,18 @@
                     <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
                 </section>
                 <section class="nav__derecha">
-                    <a href="/Proyecto Final/php/MostrarUsuario.php">Usuarios</a>
-                    <a href="/Proyecto Final/html/AgregarUsuario.html">Agregar</a>
-                    <a href="ModificarUsuario.php">Modificar y Eliminar</a>
+                    <a href="../administrador/MostrarUsuario.php">Usuarios</a>
+                    <a href="../administrador/AgregarUsuario.php">Agregar</a>
+                    <a href="../administrador/ModificarUsuario.php">Modificar y Eliminar</a>
                 </section>
             </nav>
         </div>
     
         <div class="nav-marcas">
             <nav class="navegacion-marcas contenedor">
-                <a href="/Proyecto Final/php/MostrarProducto.php">Producto</a>
-                <a href="/Proyecto Final/html/AgregarProducto.html">Agregar</a>
-                <a href="ModificarProducto.php">Modificar y Eliminar</a>
+                <a href="../administrador/MostrarProducto.php">Producto</a>
+                <a href="../administrador/AgregarProducto.php">Agregar</a>
+                <a href="../administrador/ModificarProducto.php">Modificar y Eliminar</a>
             </nav>
         </div>
     

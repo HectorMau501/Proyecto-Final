@@ -24,18 +24,18 @@
                     <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
                 </section>
                 <section class="nav__derecha">
-                    <a href="/Proyecto Final/php/MostrarUsuario.php">Usuarios</a>
-                    <a href="/Proyecto Final/html/AgregarUsuario.html">Agregar</a>
-                    <a href="ModificarUsuario.php">Modificar y Eliminar</a>
+                    <a href="../administrador/MostrarUsuario.php">Usuarios</a>
+                    <a href="../administrador/AgregarUsuario.php">Agregar</a>
+                    <a href="../administrador/ModificarUsuario.php">Modificar y Eliminar</a>
                 </section>
             </nav>
         </div>
     
         <div class="nav-marcas">
             <nav class="navegacion-marcas contenedor">
-                <a href="/Proyecto Final/php/MostrarProducto.php">Producto</a>
-                <a href="/Proyecto Final/html/AgregarProducto.html">Agregar</a>
-                <a href="ModificarProducto.php">Modificar y Eliminar</a>
+                <a href="../administrador/MostrarProducto.php">Producto</a>
+                <a href="../administrador/AgregarProducto.php">Agregar</a>
+                <a href="../administrador/ModificarProducto.php">Modificar y Eliminar</a>
             </nav>
         </div>
 
@@ -55,7 +55,7 @@
                     <div class="contenedor-campos">
                     <div class="campo">
                             <label>ID</label>
-                            <input class="input-text" type="text" name="id" placeholder="id">
+                            <input class="input-text" type="text" REQUIRED name="id" placeholder="id">
                         </div>
 
                         <div class="campo">
@@ -98,6 +98,11 @@
                         <div class="campo">
                             <label>URL de la Imagen</label>
                             <input class="input-text" type="text" name="imagen" placeholder="URL">
+                        </div>
+
+                        <div class="campo">
+                            <label>Stock</label>
+                            <input class="input-text" type="text" name="stock" placeholder="Stock">
                         </div>
     
 

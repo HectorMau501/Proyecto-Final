@@ -41,27 +41,27 @@ mysqli_close($con);
 </head>
 <body>
 
+
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
                 <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="Ubicacion.html">Ubicación</a>
-                <a href="Registro.html">Registro</a>
-                <a href="Login.html">Login</a>
+            <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
+                <a href="UbicacionCliente.html">Ubicación</a>
                 <a href="Carrito.php">Carrito</a>
+                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
             </section>
         </nav>
     </div>
 
     <div class="nav-marcas">
         <nav class="navegacion-marcas contenedor">
-            <a href="/Proyecto Final/php/Honda.php">Honda</a>
-            <a href="/Proyecto Final/php/Nissan.php">Nissan</a>
-            <a href="/Proyecto Final/php/Ford.php">Ford</a>
-            <a href="/Proyecto Final/php/Chevrolet.php">Chevrolet</a>
+            <a href="../cliente/HondaCliente.php">Honda</a>
+            <a href="../cliente/NissanCliente.php">Nissan</a>
+            <a href="../cliente/FordCliente.php">Ford</a>
+            <a href="../cliente/ChevroletCliente.php">Chevrolet</a>
         </nav>
     </div>
 
@@ -96,7 +96,7 @@ mysqli_close($con);
                     </p>   
                 <a href="shop-single.php?id=<?php echo $row['id']; ?>">
                     <div class="alinear-derecha flex">
-                        <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>
+                        <button class="button " class="input-text" type="submit" value="">Comprar</button>
                     </div>
                 </a>
             </div>          
@@ -107,6 +107,6 @@ mysqli_close($con);
     <footer class="footer">
         <p class="text__footer">Todos los Derechos reservados para The Cars</p>
     </footer>
-    
+
 </body>
 </html>

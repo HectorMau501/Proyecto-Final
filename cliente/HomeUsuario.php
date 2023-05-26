@@ -26,7 +26,25 @@
 
 <body>
 
+<?php
+/*
+include "../php/Conexion.php";
+    session_start();
 
+    $correo = $_SESSION['correo'];
+
+    
+    $sql_busqueda = "SELECT * FROM usuario WHERE correo = '$correo'";
+    
+    $sql_query = mysqli_query($con,$sql_busqueda);
+    
+    while($row = mysqli_fetch_array($sql_query)){    
+?>
+
+<h3><?= $row["correo"] ?></h3>
+
+<?php }*/
+?>  
 
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
@@ -34,12 +52,21 @@
                 <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="Ubicacion.html">Ubicación</a>
-                <a href="Registro.html">Registro</a>
-                <a href="Login.html">Login</a>
-                <a href="Carrito.php">Carrito</a>
+            <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
+                <a href="UbicacionCliente.html">Ubicación</a>       
+                <a href="Carrito.php"><img class="icono" src="../icon/icons8-comprar-32.png" alt=""></a>
+               
+                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
             </section>
+        </nav>
+    </div>
+
+    <div class="nav-marcas">
+        <nav class="navegacion-marcas contenedor">
+            <a href="../cliente/HondaCliente.php">Honda</a>
+            <a href="../cliente/NissanCliente.php">Nissan</a>
+            <a href="../cliente/FordCliente.php">Ford</a>
+            <a href="../cliente/ChevroletCliente.php">Chevrolet</a>
         </nav>
     </div>
 

@@ -49,6 +49,11 @@ body{
     margin: 0;
 }
 
+.icono{
+    height: 18px;
+    width: 18px;
+}
+
 img{
     max-width: 100%;
 }

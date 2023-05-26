@@ -1,20 +1,36 @@
 <?php
 
-include "Conexion.php";
+include "../php/Conexion.php";
 
 //Variables de la tabla
-$id = $_POST['id'];
+$id = 0;
 $nombre = $_POST['nombre'];
 $correo = $_POST['correo'];
 $contrasena = $_POST['password'];
 $direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
 
+if(isset($_POST['id'])){
+    $id = $_POST['id'];
+}
 
 //Esto es para que en el boton dependiendo del name que tenga pues al momento
 //de oprimirlo pues haga dicha accion.
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['agregar'])){
 
+$sql = mysqli_query($con, "INSERT INTO usuario (id,nombre,correo,password,telefono,direccion) 
+values (0,'$nombre', '$correo', '$contrasena', '$telefono', '$direccion')");
+
+
+    if($sql){
+        header("location: AgregarUsuario.php");
+    }
+    else{
+        echo " Usuario no agregado";
+    }
+
+}
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
 

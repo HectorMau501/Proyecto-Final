@@ -1,6 +1,6 @@
 <?php
 
-include "Conexion.php";
+include "../php/Conexion.php";
 
 
 if(!$con){
@@ -18,7 +18,8 @@ correo = '".$correo."' and password = '".$contrasena."'");
 $nr = mysqli_num_rows($query);
 
 if($nr == 1){
-    header("location: /Proyecto Final/php/MostrarUsuario.php");
+
+    header("location: MostrarUsuario.php");
 }
 else if($nr == 0){
     echo "No se ha puesto bien los datos";

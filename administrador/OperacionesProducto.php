@@ -1,23 +1,38 @@
 <?php
 
-include "Conexion.php";
+include "../php/Conexion.php";
 
 //Variables de la tabla
-$id = $_POST['id'];
+$id = 0;
 $nombre = $_POST['nombre'];
 $marca = $_POST['marca'];
 $precio = $_POST['precio'];
 $tipo = $_POST['tipo'];
 $descripcion = $_POST['descripcion'];
 $imagen = $_POST['imagen'];
+$stock = $_POST['stock'];
 
-
+if(isset($_POST['id'])){
+    $id = $_POST['id'];
+}
 
 
 //Esto es para que en el boton dependiendo del name que tenga pues al momento
 //de oprimirlo pues haga dicha accion.
 
+if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['agregar'])){
+$sql = mysqli_query($con, "INSERT INTO producto (id,nombre,marca,precio,tipo,descripcion,imagen,stock) 
+values (0,'$nombre', '$marca', '$precio', '$tipo', '$descripcion','$imagen',$stock)");
 
+
+if($sql){
+    header("location: AgregarProducto.php");
+}
+else{
+    echo " Usuario no agregado";
+}
+
+}
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
 

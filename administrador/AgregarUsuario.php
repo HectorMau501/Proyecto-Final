@@ -24,18 +24,18 @@
                     <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
                 </section>
                 <section class="nav__derecha">
-                    <a href="/Proyecto Final/php/MostrarUsuario.php">Usuarios</a>
-                    <a href="/Proyecto Final/html/AgregarUsuario.html">Agregar</a>
-                    <a href="ModificarUsuario.php">Modificar y Eliminar</a>
+                    <a href="../administrador/MostrarUsuario.php">Usuarios</a>
+                    <a href="../administrador/AgregarUsuario.php">Agregar</a>
+                    <a href="../administrador/ModificarUsuario.php">Modificar y Eliminar</a>
                 </section>
             </nav>
         </div>
     
         <div class="nav-marcas">
             <nav class="navegacion-marcas contenedor">
-                <a href="/Proyecto Final/php/MostrarProducto.php">Producto</a>
-                <a href="/Proyecto Final/html/AgregarProducto.html">Agregar</a>
-                <a href="ModificarProducto.php">Modificar y Eliminar</a>
+                <a href="../administrador/MostrarProducto.php">Producto</a>
+                <a href="../administrador/AgregarProducto.php">Agregar</a>
+                <a href="../administrador/ModificarProducto.php">Modificar y Eliminar</a>
             </nav>
         </div>
 
@@ -44,24 +44,18 @@
 
     <main class="contenedor">
         <h2 class="centrar-texto">Bienvenido Administrador</h2>
-        <h3 class="centrar-texto">Modificar y Eliminar Usuario</h3>
+        <h3 class="centrar-texto">Agregar Usuarios</h3>
 
         <div class="Agregar">             
             <form class="formulario__usuario" method="POST" action="OperacionesUsuario.php">
                 <fieldset>
-                    <legend>Modifica poniendo el "ID" del usuario junto con los nuevos datos.</legend>
-                    <legend>Elimina solamente poniendo el "ID" del usuario.</legend>
+                    <legend>Crear una Cuenta</legend>
         
                     <div class="contenedor-campos">
-                        <div class="campo">
-                            <label>ID</label>
-                            <input class="input-text" type="text" name="id" placeholder="id">
-                        </div>
-
-                        <dis class="campo">
+                        <disv class="campo">
                             <label for="nombre">Nombre</label>
                             <input class="input-text" type="text" name="nombre" id="nombre" type="text" placeholder="Nombre">
-                        </dis>
+                        </disv>
         
                         <div class="campo">
                             <label for="correo">Correo</label>
@@ -84,15 +78,15 @@
                         </div>
 
                         <div class="alinear-derecha flex">
-                            <input class="button button_eliminar button_move" type="submit" value="Eliminar" name="eliminar"></input>
-                            <input class="button button_move" type="submit" value="Modificar" name="modificar"></input>                        
+                            <input class="button button_move" class="input-text" type="submit" name="agregar" value="Crear Cuenta"></input>
                         </div>
+
                     </div>
                 </fieldset>
             </form>
        </div>
-            <table>
-            
+       
+       <table>
                 <caption>Usuarios</caption>
                 <tr>
                     <th>ID</th>
@@ -102,7 +96,7 @@
                     <th>Teléfono</th>
                     <th>Dirección</th>
                 </tr>            
-    
+ 
     <?php
 
     include 'BusquedaUsuario.php';
@@ -120,7 +114,7 @@
     
 <?php }
 ?> 
-       </div>
+
        </table>
     </main>
 
