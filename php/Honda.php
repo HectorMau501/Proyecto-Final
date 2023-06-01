@@ -35,17 +35,19 @@ mysqli_close($con);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="/Proyecto Final/css/Styles.css">
-        <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
-
+    <link rel="stylesheet" href="/Proyecto Final/css/StylesUsuario.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
 </head>
+
 <body>
 
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="Home.html">Venta de Automoviles</a>
+                <a  href="/Proyecto Final/html/Home.html">
+                    <img src="../icon/SpeedWheels2.jpg" alt="">
+                </a>
             </section>
             <section class="nav__derecha">
                 <a href="/Proyecto Final/php/Productos.php">Productos</a>

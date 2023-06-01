@@ -14,23 +14,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="/Proyecto Final/css/Styles.css">
+    <link rel="stylesheet" href="/Proyecto Final/css/StylesUsuario.css">
     <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
 
 
 </head>
 <body>
     
+<?php
+session_start();
+
+include "../php/Conexion.php";
+
+if(isset($_SESSION['correo'])){
+    $correo = $_SESSION['correo'];
+
+    
+    $sql_busqueda = "SELECT * FROM usuario WHERE correo = '$correo'";
+    
+    $sql_query = mysqli_query($con,$sql_busqueda);
+    
+    while($row = mysqli_fetch_array($sql_query)){    
+        ?>
+        <p class="correo"><?= $row["correo"] ?></p>
+        <?php
+    }
+}else{
+    echo "Seccion no iniciada";
+}
+?>  
+
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
+                <a  href="/Proyecto Final/cliente/HomeUsuario.php"><img src="../icon/SpeedWheels2.jpg" alt=""></a>
             </section>
             <section class="nav__derecha">
             <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="UbicacionCliente.html">Ubicación</a>
-                <a href="Carrito.php">Carrito</a>
-                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
+                <a href="UbicacionCliente.php">Ubicación</a>       
+            <section class="carrito">
+                <a href="Carrito.php">
+                    <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32.png" alt="" id="imagen-salida">
+                    <div class="imagen-hover" id="imagen-hover"></div>
+                </a>
+            </section>
+               <section class="salida">
+                    <a href="/Proyecto Final/html/Home.html">
+                        <img src="../icon/icons8-salida-32.png" alt=""id="imagen-salida">
+                        <div class="imagen-hover" id="imagen-hover"></div>
+                    </a>
+               </section>
             </section>
         </nav>
     </div>

@@ -41,17 +41,49 @@ mysqli_close($con);
 </head>
 <body>
 
+<?php
+session_start();
+
+include "../php/Conexion.php";
+
+if(isset($_SESSION['correo'])){
+    $correo = $_SESSION['correo'];
+
+    
+    $sql_busqueda = "SELECT * FROM usuario WHERE correo = '$correo'";
+    
+    $sql_query = mysqli_query($con,$sql_busqueda);
+    
+    while($row = mysqli_fetch_array($sql_query)){    
+        ?>
+        <p class="correo"><?= $row["correo"] ?></p>
+        <?php
+    }
+}else{
+    echo "Seccion no iniciada";
+}
+?>  
 
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
+                <a  href="/Proyecto Final/cliente/HomeUsuario.php"><img src="../icon/SpeedWheels2.jpg" alt=""></a>
             </section>
             <section class="nav__derecha">
             <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="UbicacionCliente.html">Ubicación</a>
-                <a href="Carrito.php">Carrito</a>
-                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
+                <a href="UbicacionCliente.php">Ubicación</a>       
+            <section class="carrito">
+                <a href="Carrito.php">
+                    <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32.png" alt="" id="imagen-salida">
+                    <div class="imagen-hover" id="imagen-hover"></div>
+                </a>
+            </section>
+               <section class="salida">
+                    <a href="/Proyecto Final/html/Home.html">
+                        <img src="../icon/icons8-salida-32.png" alt=""id="imagen-salida">
+                        <div class="imagen-hover" id="imagen-hover"></div>
+                    </a>
+               </section>
             </section>
         </nav>
     </div>
@@ -73,7 +105,7 @@ mysqli_close($con);
         foreach($resultado as $row){  ?>     
         <div class="producto">
             <a href="shop-single.php?id=<?php echo $row['id']; ?>">
-                <div class="producto__imagen">
+                <div class="">
                     <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
                 </div>
             </a>    
@@ -95,7 +127,7 @@ mysqli_close($con);
                     </p>   
                 <a href="shop-single.php?id=<?php echo $row['id']; ?>">
                     <div class="alinear-derecha flex">
-                        <button class="button " class="input-text" type="submit" value="">Comprar</button>
+                        <button class="button " class="input-text" type="submit" value="">Ver</button>
                     </div>
                 </a>
             </div>          

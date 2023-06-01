@@ -27,10 +27,11 @@
 <body>
 
 <?php
-/*
-include "../php/Conexion.php";
-    session_start();
+session_start();
 
+include "../php/Conexion.php";
+
+if(isset($_SESSION['correo'])){
     $correo = $_SESSION['correo'];
 
     
@@ -39,24 +40,35 @@ include "../php/Conexion.php";
     $sql_query = mysqli_query($con,$sql_busqueda);
     
     while($row = mysqli_fetch_array($sql_query)){    
-?>
-
-<h3><?= $row["correo"] ?></h3>
-
-<?php }*/
+        ?>
+        <p class="correo"><?= $row["correo"] ?></p>
+        <?php
+    }
+}else{
+    echo "Seccion no iniciada";
+}
 ?>  
 
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
+                <a  href="/Proyecto Final/cliente/HomeUsuario.php"><img src="../icon/SpeedWheels2.jpg" alt=""></a>
             </section>
             <section class="nav__derecha">
             <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="UbicacionCliente.html">Ubicación</a>       
-                <a href="Carrito.php"><img class="icono" src="../icon/icons8-comprar-32.png" alt=""></a>
-               
-                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
+                <a href="UbicacionCliente.php">Ubicación</a>       
+            <section class="carrito">
+                <a href="Carrito.php">
+                    <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32.png" alt="" id="imagen-salida">
+                    <div class="imagen-hover" id="imagen-hover"></div>
+                </a>
+            </section>
+               <section class="salida">
+                    <a href="/Proyecto Final/html/Home.html">
+                        <img src="../icon/icons8-salida-32.png" alt=""id="imagen-salida">
+                        <div class="imagen-hover" id="imagen-hover"></div>
+                    </a>
+               </section>
             </section>
         </nav>
     </div>
@@ -107,9 +119,7 @@ include "../php/Conexion.php";
                 </div>
                 <p>Estos son automóviles nuevos, en los cuales son de diferentes diseños y marcas. Nos enfocamos en vender automóviles con un precio al cliente accesible, duradero, fiable entre otros. Tenemos automóviles de uso familiar, para trabajar como las camionetas, de uso exclusivo y demás. Marcas que podrás encontrar desde la Honda, Nissan, Toyota etc.</p>
             </section>
-
-        </div>
-                
+        </div>               
     </main>
 
 

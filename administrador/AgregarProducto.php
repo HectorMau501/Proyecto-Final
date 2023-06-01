@@ -99,6 +99,16 @@
                             <input class="input-text" type="text" name="stock" placeholder="stock">
                         </div>
 
+                        <div class="campo">
+                            <label for="Tipo">Sucursal</label>
+                            <input class="input-text" type="text" name="tipo" list="opciones_tipos" placeholder="Seleccione una opción de la lista">
+                            <datalist id="opciones_tipos">
+                                <option  value="C. Nueva Escocia 1885, 44630">
+                                <option  value="Av. de las Américas 1166, Country Club">
+                                <option  value="Av. del Servidor Público 981, 45019"> 
+                            </datalist>
+                        </div>
+
                         <div class="alinear-derecha flex">
                             <!--Recuerda en el buttun poder el nombre isset que le diste para que realice esa funcion-->
                             <input class="button button_move" type="submit" value="Agregar Nuevo Producto" name="agregar"></input>
@@ -133,6 +143,7 @@ include 'BusquedaProducto.php';
             <td><?= $row["tipo"] ?></td>
             <td><?= $row["descripcion"] ?></td>
             <td><img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto"></td>
+            <td><?= $row["stock"] ?></td>
             <td><?= $row["stock"] ?></td>
         </tr>    
 

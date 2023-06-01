@@ -35,11 +35,6 @@ if(isset($_GET['id'])){
     header("Location: ./ProductosUsuario.php");
 }
 
-
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +67,7 @@ if(isset($_GET['id'])){
             </section>
             <section class="nav__derecha">
             <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="UbicacionCliente.html">Ubicación</a>
+                <a href="UbicacionCliente.php">Ubicación</a>
                 <a href="Carrito.php">Carrito</a>
                 <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
             </section>
@@ -96,9 +91,7 @@ if(isset($_GET['id'])){
                     <span class="producto__bold"><?php echo $fila['nombre']; ?></span>
                 </h2> 
         <div class="producto">
-                <div class="producto__imagen">
                     <img src="/Proyecto Final/img/<?php echo $fila['imagen']; ?>" alt="<?php echo $fila['1']; ?>">
-                </div>    
             <div class="producto__informacion">
 
                     <p class="producto__bold">Estrena desde:

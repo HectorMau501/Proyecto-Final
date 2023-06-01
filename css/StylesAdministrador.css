@@ -494,6 +494,7 @@ text-align: center;
     background-color: var(--gris);
     color: var(--blanco);
     cursor: pointer;
+    box-shadow: 0px 5px 15px 0px rgba(112,112,112,0.48);     
 }
 
 .flex{

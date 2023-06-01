@@ -477,10 +477,11 @@ img{
 
 .input-text{
     text-align:unset;
-    width: 100%;
+    width: 50%;
     padding: 1rem 1.5rem;
     border: none;
     border-radius: 0.5rem;
+    text-transform: uppercase;
 }
 
 .input-cantidad{
@@ -513,6 +514,10 @@ img{
     .button{
         margin: 1rem 0rem 1rem 1rem;
     }
+}
+
+.button_comprar{
+    width: 50%;
 }
 
 .remover{
@@ -621,7 +626,6 @@ table{
 }
 
 th{
-    border-bottom: 0.2rem solid black;
     empty-cells:hide;
     caption-side: bottom;
     font-size: 1.5rem;
