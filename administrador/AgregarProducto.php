@@ -57,14 +57,21 @@
                             <input class="input-text" type="text" name="nombre" placeholder="Nombre">
                         </div>
 
+                        <?php
+
+include "../php/Conexion.php";
+
+$queryProvedor = "SELECT marca_producto FROM provedor";
+$resultadoProvedor = mysqli_query($con, $queryProvedor);
+?>
                         <div class="campo">
-                            <label for="Marcas">Marca</label>
-                            <input class="input-text" type="text" name="marca" list="opciones_marcas" placeholder="Seleccione una opción de la lista">
-                            <datalist id="opciones_marcas">
-                                <option  value="Honda">
-                                <option  value="Nissan">
-                                <option  value="Ford"> 
-                                <option  value="Chevrolet">       
+                            <label for="Tipo">Provedor</label>
+                            <input class="input-text" type="text" name="marca" list="opciones_provedor" 
+                            placeholder="Seleccione una opción de la lista">
+                            <datalist id="opciones_provedor">
+                                <?php while ($filaProvedor = mysqli_fetch_assoc($resultadoProvedor)) { ?>
+                                    <option value="<?php echo $filaProvedor['marca_producto']; ?>">
+                                <?php } ?>
                             </datalist>
                         </div>
  
@@ -98,14 +105,20 @@
                             <label>Stock</label>
                             <input class="input-text" type="text" name="stock" placeholder="stock">
                         </div>
+<?php
 
+
+$querySucursal = "SELECT direccion FROM sucursal";
+$resultadoSucursal = mysqli_query($con, $querySucursal);
+?>
                         <div class="campo">
                             <label for="Tipo">Sucursal</label>
-                            <input class="input-text" type="text" name="tipo" list="opciones_tipos" placeholder="Seleccione una opción de la lista">
-                            <datalist id="opciones_tipos">
-                                <option  value="C. Nueva Escocia 1885, 44630">
-                                <option  value="Av. de las Américas 1166, Country Club">
-                                <option  value="Av. del Servidor Público 981, 45019"> 
+                            <input class="input-text" type="text" name="sucursal" list="opciones_sucursal" 
+                            placeholder="Seleccione una opción de la lista">
+                            <datalist id="opciones_sucursal">
+                                <?php while ($filaSucursal = mysqli_fetch_assoc($resultadoSucursal)) { ?>
+                                    <option value="<?php echo $filaSucursal['direccion']; ?>">
+                                <?php } ?>
                             </datalist>
                         </div>
 
@@ -123,12 +136,13 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
-            <th>Marca</th>
+            <th>Provedor</th>
             <th>Precio</th>
             <th>Tipo</th>
             <th>Descripción</th>
             <th>Imagen</th>
             <th>Stock</th>
+            <th>Sucursal</th>
         </tr>
 <?php
 
@@ -139,12 +153,12 @@ include 'BusquedaProducto.php';
             <td><?= $row["id"] ?></td>
             <td><?= $row["nombre"] ?></td>
             <td><?= $row["marca"] ?></td>
-            <td><?= $row["precio"] ?></td>
+            <td>$<?= $row["precio"] ?></td>
             <td><?= $row["tipo"] ?></td>
             <td><?= $row["descripcion"] ?></td>
             <td><img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto"></td>
             <td><?= $row["stock"] ?></td>
-            <td><?= $row["stock"] ?></td>
+            <td><?= $row["sucursal"] ?></td>
         </tr>    
 
 <?php  } ?>

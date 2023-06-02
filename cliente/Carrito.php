@@ -153,18 +153,9 @@ while($row = mysqli_fetch_array($sql_query)){?>
         <h3 class="">Cars Totals</h3>
    
         <h4 class="">Total: <span>$<?= $total ?></span> </h4>
-        
-        <!-- <?php
-        //foreach($resultado as $row){  ?>  
-        <a href="CompraUsuario.php echo $row['id']; ?>">
-            <div class="alinear-derecha flex">
-                <button class="button " class="input-text" type="submit" value="">Ver</button>
-            </div>
+        <a  href="../cliente/CompraUsuario.php">
+            <input class="button button_comprar" type="submit" value="Comprar" name="comprar">
         </a>
-        <?php
-       //}
-        ?> -->
-
     </section>
 
 

@@ -2,6 +2,13 @@
 
 include "../php/Conexion.php";
 
+
+if(!$con){
+    die("No hay conexion".mysqli_connect_error());
+}
+
+var_dump($_POST);
+
 //Variables de la tabla
 $id = 0;
 $nombre = $_POST['nombre'];
@@ -17,23 +24,43 @@ if(isset($_POST['id'])){
 }
 
 
+
 //Esto es para que en el boton dependiendo del name que tenga pues al momento
 //de oprimirlo pues haga dicha accion.
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['agregar'])){
-$sql = mysqli_query($con, "INSERT INTO producto (id,nombre,marca,precio,tipo,descripcion,imagen,stock) 
-values (0,'$nombre', '$marca', '$precio', '$tipo', '$descripcion','$imagen',$stock)");
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['agregar'])) {
+    $direccion_sucursal = $_POST['sucursal'];
+    $marca_provedor = $_POST['marca'];
 
+    // Obtener el ID de la sucursal en función de la dirección
+    $sucursal_query = mysqli_query($con, "SELECT id FROM sucursal WHERE direccion = '$direccion_sucursal'");
+    $sucursal = mysqli_fetch_assoc($sucursal_query);
 
-if($sql){
-    header("location: AgregarProducto.php");
+    $provedor_query = mysqli_query($con, "SELECT id FROM provedor WHERE marca_producto = '$marca_provedor'");
+    $provedor= mysqli_fetch_assoc($provedor_query);
+
+    if ($sucursal && $provedor_query) {
+        $id_sucursal = $sucursal['id'];
+        $id_provedor = $provedor['id'];
+
+        $sql = mysqli_query($con, "INSERT INTO producto (id, nombre, id_marca, marca, precio, tipo, descripcion, 
+        imagen, stock, id_sucursal, sucursal) 
+        VALUES (0, '$nombre', ' $id_provedor', '$marca', '$precio', '$tipo', '$descripcion', '$imagen', $stock, $id_sucursal,
+        '$direccion_sucursal')");
+
+        if ($sql) {
+            header("location: AgregarProducto.php");
+            exit();
+        } else {
+            echo "Error al agregar el producto: " . mysqli_error($con);
+        }
+    } else {
+        echo "Error al obtener la dirección de la sucursal.";
+    }
 }
-else{
-    echo " Usuario no agregado";
-}
 
-}
 
+/*
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
 
     $sql_modificar = "UPDATE producto SET nombre = '$nombre', marca = '$marca',
@@ -57,6 +84,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['eliminar'])){
     else{
         echo "Error " .$sql. "<db>" .mysqli_error($con);
     }
-}
+}*/
 
 ?>

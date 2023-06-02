@@ -13,6 +13,8 @@ if(!$con){
 // Variables para conectar
 $id_producto = $_POST['id_producto'];
 $cantidad = $_POST['cantidad'];
+$fecha = $_POST['fecha'];
+$total = $_POST['total'];
 
 var_dump($id_producto);
 

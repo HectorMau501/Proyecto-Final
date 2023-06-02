@@ -21,9 +21,12 @@ if(isset($_GET['id'])){
         // Establecer la variable $id_usuario
         $id_usuario = $_SESSION['id_usuario'] == 0 ? null : $_SESSION['id_usuario'];
 
+        $cantidad = 1;
+
         // Aquí deberías insertar los datos en la tabla de carrito
     } 
 } 
+
 
 ?>
 <!DOCTYPE html>
@@ -50,6 +53,7 @@ if(isset($_GET['id'])){
 <body>
     
 <?php
+
 
 
     $nombre = $_SESSION['nombre'];
@@ -147,13 +151,16 @@ $id_usuario = $_SESSION['id_usuario'];
 $total = 0;
 
 
-foreach($resultado as $row){?>
+$sql_busqueda = "SELECT * FROM carrito WHERE id_usuario = '$id_usuario'";
 
-            <div class="">
-                </div>
-            </div>   
+$sql_query = mysqli_query($con,$sql_busqueda);
+
+while($row = mysqli_fetch_array($sql_query)){?>
+
+
+   
     <tr>
-            <td><?php echo $fila['nombre']; ?></td> 
+            <td><?= $row["nombre_producto"] ?></td> 
             <td>$<?= $row["precio_producto"] ?></td>
             <td><?= $row["cantidad"] ?></td> 
 
@@ -171,16 +178,22 @@ foreach($resultado as $row){?>
         $total += $subtotal;
 
         ?>
-</table>
-    <form action="../cliente/agregarHistorial.php" method="POST">
-        <input type="hidden" name="id_producto" value="<?php echo $fila['id']; ?>">
-        <button class="button" type="submit">Pagar</button>
-    </form>   
 
 <?php }
 ?>      
 
+</table>
 
+<?php
+        foreach($resultado as $row){  ?> 
+<form action="agregarHistorial.php" method="POST">
+        <input type="hidden" name="id_producto" value="<?php echo $fila['id']; ?>">
+        <input type="number" name="cantidad" value="1" min="1" ">
+    <button class="button" type="submit">Pagar</button>
+ </form>
+<?php
+        }
+        ?> 
 
 
 <p>Informacion de seguridad</p>

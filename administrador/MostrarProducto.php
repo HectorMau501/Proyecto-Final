@@ -74,6 +74,7 @@
             <th>Descripción</th>
             <th>Imagen</th>
             <th>Stock</th>
+            <th>Sucursal</th>
         </tr>
  
 <?php
@@ -85,11 +86,12 @@ include 'BusquedaProducto.php';
             <td><?= $row["id"] ?></td>
             <td><?= $row["nombre"] ?></td>
             <td><?= $row["marca"] ?></td>
-            <td><?= $row["precio"] ?></td>
+            <td>$<?= $row["precio"] ?></td>
             <td><?= $row["tipo"] ?></td>
             <td><?= $row["descripcion"] ?></td>
             <td><img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto"></td>
             <td><?= $row["stock"] ?></td>
+            <td><?= $row["sucursal"] ?></td>
         </tr>    
 
 <?php  } ?>
