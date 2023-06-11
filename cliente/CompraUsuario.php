@@ -55,57 +55,63 @@ if(isset($_GET['id'])){
 <?php
 
 
+$nombre = $_SESSION['nombre'];
+$telefono = $_SESSION['telefono'];
+$direccion = $_SESSION['direccion'];
 
-    $nombre = $_SESSION['nombre'];
+if(isset($_SESSION['correo'])){
     $correo = $_SESSION['correo'];
-    $telefono = $_SESSION['telefono'];
-    $direccion = $_SESSION['direccion'];
-
 
     
-    $sql_busqueda = "SELECT * FROM usuario WHERE  nombre = '$nombre' and correo = '$correo'
-    and telefono = '$telefono' and direccion = '$direccion'";
+    $sql_busqueda = "SELECT * FROM usuario WHERE correo = '$correo'";
     
     $sql_query = mysqli_query($con,$sql_busqueda);
-     
+    
     while($row = mysqli_fetch_array($sql_query)){    
         ?>
         <p class="correo"><?= $row["correo"] ?></p>
         <?php
     }
-
-?>  
+}else{
+    echo "Seccion no iniciada";
+}
+?> 
 
 <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a  href="/Proyecto Final/cliente/HomeUsuario.php"><img src="../icon/SpeedWheels2.jpg" alt=""></a>
+                <ul class="menu_horizontal">
+                    <li>
+                        <a href="/Proyecto Final/cliente/HomeUsuario.php">
+                            <img src="../icon/SpeedWheels (1).jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
             </section>
             <section class="nav__derecha">
-            <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="UbicacionCliente.php">Ubicación</a>       
-            <section class="carrito">
-                <a href="Carrito.php">
-                    <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32.png" alt="" id="imagen-salida">
-                    <div class="imagen-hover" id="imagen-hover"></div>
-                </a>
-            </section>
-               <section class="salida">
+                <ul class="menu_horizontal">
+                    <li><a href="">Productos</a>
+                        <ul class="menu_vertical">
+                            <li><a href="/Proyecto Final/cliente/HondaCliente.php">Honda</a></li>
+                            <li><a href="/Proyecto Final/cliente/NissanCliente.php">Nissan</a></li>
+                            <li><a href="/Proyecto Final/cliente/FordCliente.php">Ford</a></li>
+                            <li><a href="/Proyecto Final/cliente/ChevroletCliente.php">Chevrolet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Proyecto Final/cliente/UbicacionCliente.php">Ubicación</a></li>
+                    <li>
+                        <a href="Carrito.php">
+                            <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32 (1).png" alt="" id="imagen-salida">
+                            <div class="imagen-hover" id="imagen-hover"></div>
+                        </a>
+                    </li>                    
+                <li>    
                     <a href="/Proyecto Final/html/Home.html">
-                        <img src="../icon/icons8-salida-32.png" alt=""id="imagen-salida">
+                        <img src="../icon/icons8-salida-32 (1).png" alt=""id="imagen-salida">
                         <div class="imagen-hover" id="imagen-hover"></div>
-                    </a>
-               </section>
+                    </a></li>
+                </ul>
             </section>
-        </nav>
-    </div>
-
-    <div class="nav-marcas">
-        <nav class="navegacion-marcas contenedor">
-            <a href="../cliente/HondaCliente.php">Honda</a>
-            <a href="../cliente/NissanCliente.php">Nissan</a>
-            <a href="../cliente/FordCliente.php">Ford</a>
-            <a href="../cliente/ChevroletCliente.php">Chevrolet</a>
         </nav>
     </div>
 
@@ -119,16 +125,34 @@ if(isset($_GET['id'])){
 
             while($row = mysqli_fetch_array($sql_query)){    
                 ?>
-                    <form  action="">
+                <!-- <form action="agregarHistorial.php" method="POST"> -->
+                    <form  action="correo.php" method="POST">
                         <div class="grid_productos">
                             <div class="compra">
                                 <h3>Datos personales</h3>
                                 <p> <span class="negrita">Cliente: </span><?= $row["nombre"] ?></p>
                                 <p> <span class="negrita">Domicilio: </span><?= $row["direccion"] ?></p>
                                 <p> <span class="negrita">Telefono: </span><?= $row["telefono"] ?></p>
-                                <p> <span class="negrita">Numero de cuenta: </span></p>
-                                <input class="input-text" type="text" min="0">
+                                                       
+                                <p> <span class="negrita">Calle: </span></p>
+                            <input class="input-text" type="text"  name="calle" type="text" id="calle" placeholder="Calle">
+                        
+                        
+                            <p> <span class="negrita">No_exterior: </span></p>
+                            <input class="input-text" type="number"  name="no_exterior" type="text" id="no_exterior" placeholder="No_exterior">
+                        
+                        
+                            <p> <span class="negrita">Colonia: </span></p>
+                            <input class="input-text" type="text"  name="colonia" type="text" id="colonia" placeholder="Colonia">
+                       
+                            <p> <span class="negrita">Numero de cuenta: </span></p>
+                            <input class="input-text" type="text"  name="cuenta" type="text" id="colonia" placeholder="Numero de cuenta">
+                                <button class="button" type="submit">Pagar</button>
+                                    <!-- </form> -->
+                                </form>
+   
                             </div>
+
                             
                             <div class="">
         <?php
@@ -163,7 +187,7 @@ while($row = mysqli_fetch_array($sql_query)){?>
             <td><?= $row["nombre_producto"] ?></td> 
             <td>$<?= $row["precio_producto"] ?></td>
             <td><?= $row["cantidad"] ?></td> 
-
+            
          <?php
         $subtotal = $row["cantidad"] * $row["precio_producto"];
          ?>
@@ -184,16 +208,7 @@ while($row = mysqli_fetch_array($sql_query)){?>
 
 </table>
 
-<?php
-        foreach($resultado as $row){  ?> 
-<form action="agregarHistorial.php" method="POST">
-        <input type="hidden" name="id_producto" value="<?php echo $fila['id']; ?>">
-        <input type="number" name="cantidad" value="1" min="1" ">
-    <button class="button" type="submit">Pagar</button>
- </form>
-<?php
-        }
-        ?> 
+
 
 
 <p>Informacion de seguridad</p>
@@ -201,9 +216,42 @@ while($row = mysqli_fetch_array($sql_query)){?>
 
 
 
-<footer class="footer">
-        <p class="text__footer">Todos los Derechos reservados para The Cars</p>
-</footer>    
+    <footer class="footer">
+        <div class="footer__container">
+          <div class="footer__column">
+            <h3>Politica y Privacidad</h3>
+            <p>
+                En nuestra empresa SpeedWheels vemos la privacidad de nuestros usuarios
+                como una de las cosas más importantes. Al registrarte con nosotros, utilizamos la 
+                información solo con el uso de prorpocionarte los servios que estamos ofreciendo
+                con relación con la venta de nuestros automoviles y mejorar las espectativas de nuestros
+                clientes. 
+            </p>
+          </div>
+          <div class="footer__column footer__centro">
+            <h3>Enlaces</h3>
+            <ul>
+              <li><a href="">Productos</a></li>
+              <li><a href="">Promociones</a></li>
+              <li><a href="../html/Ubicacion.html">Ubicación</a></li>
+              <li><a href="">Contacto</a></li>
+            </ul>
+          </div>
+          <div class="footer__column">
+            <h3>Contacto</h3>
+            <p>Dirección: Es Tienda Online 100%</p>
+            <!-- icon by Icons8 -->
+            <p><img src="../icon/icons8-whatsapp-32.png" alt="">  Teléfono: (123) 456-7890</p>
+            <p><img src="../icon/icons8-gmail-32.png" alt="">  Email: SpeedWheels@gmail.com</p>
+            <h3>Nuestras Redes Sociales</h3>
+            <p><img src="../icon/icons8-facebook-nuevo-32.png" alt="">  Facebook: SpeedWheels212</p>
+            <p><img src="../icon/icons8-instagram-32 (1).png" alt="">  Instagram: Wheels501</p>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <p>&copy; 2023 Tu Tienda de Autos. Todos los derechos reservados.</p>
+        </div>
+      </footer>    
     
 </body>
 </html>

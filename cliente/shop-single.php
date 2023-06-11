@@ -60,26 +60,62 @@ if(isset($_GET['id'])){
 </head>
 <body>
 
+<?php
+
+
+if(isset($_SESSION['correo'])){
+    $correo = $_SESSION['correo'];
+
+    
+    $sql_busqueda = "SELECT * FROM usuario WHERE correo = '$correo'";
+    
+    $sql_query = mysqli_query($con,$sql_busqueda);
+    
+    while($row = mysqli_fetch_array($sql_query)){    
+        ?>
+        <p class="correo"><?= $row["correo"] ?></p>
+        <?php
+    }
+}else{
+    echo "Seccion no iniciada";
+}
+?> 
+
 <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a class="eslogan" href="/Proyecto Final/cliente/HomeUsuario.php">Venta de Automoviles</a>
+                <ul class="menu_horizontal">
+                    <li>
+                        <a href="/Proyecto Final/cliente/HomeUsuario.php">
+                            <img src="../icon/SpeedWheels (1).jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
             </section>
             <section class="nav__derecha">
-            <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
-                <a href="UbicacionCliente.php">Ubicación</a>
-                <a href="Carrito.php">Carrito</a>
-                <a href="/Proyecto Final/html/Home.html">Cerra Sección</a>
+                <ul class="menu_horizontal">
+                    <li><a href="">Productos</a>
+                        <ul class="menu_vertical">
+                            <li><a href="/Proyecto Final/cliente/HondaCliente.php">Honda</a></li>
+                            <li><a href="/Proyecto Final/cliente/NissanCliente.php">Nissan</a></li>
+                            <li><a href="/Proyecto Final/cliente/FordCliente.php">Ford</a></li>
+                            <li><a href="/Proyecto Final/cliente/ChevroletCliente.php">Chevrolet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Proyecto Final/cliente/UbicacionCliente.php">Ubicación</a></li>
+                    <li>
+                        <a href="Carrito.php">
+                            <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32 (1).png" alt="" id="imagen-salida">
+                            <div class="imagen-hover" id="imagen-hover"></div>
+                        </a>
+                    </li>                    
+                <li>    
+                    <a href="/Proyecto Final/html/Home.html">
+                        <img src="../icon/icons8-salida-32 (1).png" alt=""id="imagen-salida">
+                        <div class="imagen-hover" id="imagen-hover"></div>
+                    </a></li>
+                </ul>
             </section>
-        </nav>
-    </div>
-
-    <div class="nav-marcas">
-        <nav class="navegacion-marcas contenedor">
-            <a href="../cliente/HondaCliente.php">Honda</a>
-            <a href="../cliente/NissanCliente.php">Nissan</a>
-            <a href="../cliente/FordCliente.php">Ford</a>
-            <a href="../cliente/ChevroletCliente.php">Chevrolet</a>
         </nav>
     </div>
 
@@ -106,8 +142,9 @@ if(isset($_GET['id'])){
                         <?php echo $row['descripcion']; ?>
                     </p>  
             <form action="agregarCarrito.php" method="POST">
+                     <input type="hidden" name="id" value="ID_DEL_PRODUCTO_A_AGREGAR">
                     <input type="hidden" name="id_producto" value="<?php echo $fila['id']; ?>">
-                    <input type="number" name="cantidad" value="1" min="1" ">
+                    <!-- <input type="number" name="cantidad" value="1" min="1" "> -->
                     <button class="button" type="submit">Añadir al carrito</button>
             </form>
 

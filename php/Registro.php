@@ -2,16 +2,15 @@
 
 include "Conexion.php";
 
-$nombre = $_POST['nombre'];
-$correo = $_POST['correo'];
-$contrasena = $_POST['password'];
-$direccion = $_POST['direccion'];
-$telefono = $_POST['telefono'];
 
 
-$sql = mysqli_query($con, "INSERT INTO usuario (id,nombre,correo,password,telefono,direccion) 
-values (0,'$nombre', '$correo', '$contrasena', '$telefono', '$direccion')");
-
+$sql = mysqli_query($con, "INSERT INTO usuario (id,nombre,correo,password,telefono) 
+    values (NULL,'".$_POST['nombre']."', '".$_POST['correo']."', '".$_POST['password']."',
+    '".$_POST['telefono']."')");
+$id = mysqli_insert_id($con);
+$sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario) 
+values (NULL,'".$_POST['calle']."', '".$_POST['no_exterior']."', '".$_POST['colonia']."',
+'$id')");
 
 if($sql){
     header("location:/Proyecto Final/html/Home.html");

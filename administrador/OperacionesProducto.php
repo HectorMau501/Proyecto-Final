@@ -43,9 +43,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['agregar'])) {
         $id_sucursal = $sucursal['id'];
         $id_provedor = $provedor['id'];
 
-        $sql = mysqli_query($con, "INSERT INTO producto (id, nombre, id_marca, marca, precio, tipo, descripcion, 
+        $sql = mysqli_query($con, "INSERT INTO producto (id, nombre, id_marca, marca, precio, 
+        tipo, descripcion, 
         imagen, stock, id_sucursal, sucursal) 
-        VALUES (0, '$nombre', ' $id_provedor', '$marca', '$precio', '$tipo', '$descripcion', '$imagen', $stock, $id_sucursal,
+        VALUES (0, '$nombre', ' $id_provedor', '$marca', '$precio', '$tipo', '$descripcion', 
+        '$imagen', $stock, $id_sucursal,
         '$direccion_sucursal')");
 
         if ($sql) {
@@ -60,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['agregar'])) {
 }
 
 
-/*
+
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
 
     $sql_modificar = "UPDATE producto SET nombre = '$nombre', marca = '$marca',
@@ -84,6 +86,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['eliminar'])){
     else{
         echo "Error " .$sql. "<db>" .mysqli_error($con);
     }
-}*/
+}
 
 ?>
