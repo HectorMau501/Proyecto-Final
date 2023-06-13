@@ -94,9 +94,9 @@ if(isset($_SESSION['correo'])){
             <tr>
                 <th>Nombre</th>
                 <th>Precio</th>
-                <th>Imagen</th>
+                <th class="responsive-hide">Imagen</th>
                 <th>Cantidad</th>
-                <th>Subtotal</th>
+                <th class="responsive-hide">Subtotal</th>
                 <th>Remover</th>
             </tr>
 
@@ -119,31 +119,26 @@ $sql_query = mysqli_query($con,$sql_busqueda);
 while($row = mysqli_fetch_array($sql_query)){?>
     
     <tr>
-         <td><?= $row["nombre_producto"] ?></td> 
-         <td>$<?= $row["precio_producto"] ?></td>
-         <td>
-         <div class="producto__imagen">
-            <img src="/Proyecto Final/img/<?php echo $row['imagen_producto']; ?>" alt="imagen auto">
-        </div>
-        </td>
-         <td><?= $row["cantidad"] ?></td> 
-
-         <?php
-        $subtotal = $row["cantidad"] * $row["precio_producto"];
-         ?>
-        <td>
-            $<?= $subtotal ?>
-        </td>
-
-         <td>
-         <form action="eliminarCarrito.php" method="post">
+    <td><?= $row["nombre_producto"] ?></td> 
+    <td>$<?= $row["precio_producto"] ?></td>
+    <td>
+        <img class="responsive-hide" src="/Proyecto Final/img/<?php echo $row['imagen_producto']; ?>" alt="imagen auto">
+    </td>
+    <td><?= $row["cantidad"] ?></td> 
+    <?php
+    $subtotal = $row["cantidad"] * $row["precio_producto"];
+    ?>
+    <td class="responsive-hide">
+        $<?= $subtotal ?>
+    </td>
+    <td>
+        <form action="eliminarCarrito.php" method="post">
             <input type="hidden" name="id" value="<?= $row["id"] ?>">
-            <input class="remover " type="submit" value="Eliminar" name="eliminar">
+            <input class="remover" type="submit" value="Eliminar" name="eliminar">
         </form>
-          
-        </td>
- 
-     </tr>
+    </td>
+</tr>
+
 
         <?php
         $subtotal = $row["cantidad"] * $row["precio_producto"];

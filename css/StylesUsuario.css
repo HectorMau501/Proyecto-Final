@@ -337,10 +337,6 @@ img{
     font-size: 2rem;
 }
 
-.producto__imagen img{
-    width: 70%;
-}
-
 
                 /**Ubicacion**/
 
@@ -698,6 +694,13 @@ td{
         font-size: 2rem;
     }
 }
+
+@media (max-width: 600px) {
+    .responsive-hide {
+        display: none;
+    }
+}
+
 
 .grid_right{    
     display: flex;

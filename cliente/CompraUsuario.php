@@ -165,7 +165,6 @@ if(isset($_SESSION['correo'])){
                     <th>Producto</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
-                    <th>Subtotal</th>
                 </tr>
 
 <?php
@@ -188,20 +187,7 @@ while($row = mysqli_fetch_array($sql_query)){?>
             <td>$<?= $row["precio_producto"] ?></td>
             <td><?= $row["cantidad"] ?></td> 
             
-         <?php
-        $subtotal = $row["cantidad"] * $row["precio_producto"];
-         ?>
-        <td>
-            $<?= $subtotal ?>
-        </td>
-
      </tr>
-
-        <?php
-        $subtotal = $row["cantidad"] * $row["precio_producto"];
-        $total += $subtotal;
-
-        ?>
 
 <?php }
 ?>      
@@ -211,7 +197,6 @@ while($row = mysqli_fetch_array($sql_query)){?>
 
 
 
-<p>Informacion de seguridad</p>
     </main>
 
 

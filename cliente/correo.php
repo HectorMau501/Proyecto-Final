@@ -70,13 +70,6 @@ $usuario = mysqli_fetch_assoc($usuario_query );
     if ($usuario) {
         $id = $usuario['id'];
 
-        // $sql = mysqli_query($con, "INSERT INTO producto (id, nombre, id_marca, marca, precio, 
-        // tipo, descripcion, 
-        // imagen, stock, id_sucursal, sucursal) 
-        // VALUES (0, '$nombre', ' $id_provedor', '$marca', '$precio', '$tipo', '$descripcion', 
-        // '$imagen', $stock, $id_sucursal,
-        // '$direccion_sucursal')");
-
     $sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario,cuenta) 
     values (NULL,'".$_POST['calle']."', '".$_POST['no_exterior']."', '".$_POST['colonia']."',
     '$id', '".$_POST['cuenta']."')");

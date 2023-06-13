@@ -697,6 +697,7 @@ td{
     }
 }
 
+
 .grid_right{    
     display: flex;
     flex-direction: column;
@@ -757,9 +758,15 @@ td{
 }
 
 .grid_productos{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 2rem;
+
+}
+
+@media (min-width: 600px) {
+    .grid_productos{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 2rem;
+    }    
 }
 
 
