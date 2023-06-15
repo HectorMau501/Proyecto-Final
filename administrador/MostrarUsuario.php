@@ -51,7 +51,7 @@
                         <legend>Buscar Usuario</legend>      
                         <div class="contenedor-campos">
                             <div class="campo">
-                                <label>ID, Nombre o Correo</label>
+                                <label>ID o Nombre</label>
                                 <input class="input-text" type="text" name="buscar" placeholder="Atributo">
                             </div>
    
@@ -71,7 +71,6 @@
                     <th>Correo</th>
                     <th>Contraseña</th>
                     <th>Teléfono</th>
-                    <th>Dirección</th>
                 </tr>            
  
     <?php
@@ -86,7 +85,6 @@
              <td><?= $row["correo"] ?></td> 
              <td><?= $row["password"] ?></td> 
              <td><?= $row["telefono"] ?></td> 
-             <td><?= $row["direccion"] ?></td>  
          </tr>
     
 <?php }

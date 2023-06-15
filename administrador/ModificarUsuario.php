@@ -74,11 +74,6 @@
                         </div>
 
                         <div class="campo">
-                            <label for="direccion">Dirección</label>
-                            <input class="input-text" type="text"  name="direccion" type="text" id="direccion" placeholder="Dirección">
-                        </div>
-
-                        <div class="campo">
                             <label for="telefono">Teléfono</label>
                             <input class="input-text" type="number" name="telefono"  id="telefono" type="text" placeholder="Teléfono">
                         </div>
@@ -100,7 +95,6 @@
                     <th>Correo</th>
                     <th>Contraseña</th>
                     <th>Teléfono</th>
-                    <th>Dirección</th>
                 </tr>            
     
     <?php
@@ -115,7 +109,6 @@
              <td><?= $row["correo"] ?></td> 
              <td><?= $row["password"] ?></td> 
              <td><?= $row["telefono"] ?></td> 
-             <td><?= $row["direccion"] ?></td>  
          </tr>
     
 <?php }

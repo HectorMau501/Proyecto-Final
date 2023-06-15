@@ -22,7 +22,7 @@ if($nr == 1){
     header("location: MostrarUsuario.php");
 }
 else if($nr == 0){
-    echo "No se ha puesto bien los datos";
+    header("location:/Proyecto Final/html/LoginAdministrador.html");
 }
 
 

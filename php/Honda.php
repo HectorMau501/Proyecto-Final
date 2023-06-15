@@ -101,7 +101,7 @@ mysqli_close($con);
                         <?php echo $row['descripcion']; ?>
                 </p>
 
-                    <a href="">
+                <a href="../html/Login.html">
                         <div class="alinear-derecha flex">
                             <button class="button " class="input-text" type="submit" value="Iniciar Sesión">Comprar</button>
                         </div>

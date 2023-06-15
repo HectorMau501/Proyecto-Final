@@ -51,7 +51,7 @@
                     <legend>Buscar Producto</legend>
                         <div class="contenedor-campos">
                             <div class="campo">
-                                <label>ID, Nombre, Marca o Tipo</label>
+                                <label>ID, Nombre o Marca </label>
                                 <input class="input-text" type="text" name="buscar" placeholder="Atributo">
                             </div>
     

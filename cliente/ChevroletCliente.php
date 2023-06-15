@@ -157,7 +157,7 @@ if(isset($_SESSION['correo'])){
               <li><a href="">Productos</a></li>
               <li><a href="">Promociones</a></li>
               <li><a href="../html/Ubicacion.html">Ubicación</a></li>
-              <li><a href="">Contacto</a></li>
+              <li><a href="../html/LoginAdministrador.html">Administracion</a></li>
             </ul>
           </div>
           <div class="footer__column">

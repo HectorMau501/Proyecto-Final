@@ -57,7 +57,6 @@ if(isset($_GET['id'])){
 
 $nombre = $_SESSION['nombre'];
 $telefono = $_SESSION['telefono'];
-$direccion = $_SESSION['direccion'];
 
 if(isset($_SESSION['correo'])){
     $correo = $_SESSION['correo'];
@@ -67,6 +66,8 @@ if(isset($_SESSION['correo'])){
     
     $sql_query = mysqli_query($con,$sql_busqueda);
     
+    
+
     while($row = mysqli_fetch_array($sql_query)){    
         ?>
         <p class="correo"><?= $row["correo"] ?></p>
@@ -119,7 +120,7 @@ if(isset($_SESSION['correo'])){
         <?php
            
            $sql_busqueda = "SELECT * FROM usuario WHERE  nombre = '$nombre' and correo = '$correo'
-            and telefono = '$telefono' and direccion = '$direccion'";
+            and telefono = '$telefono'";
             
             $sql_query = mysqli_query($con,$sql_busqueda);
 
@@ -131,26 +132,25 @@ if(isset($_SESSION['correo'])){
                             <div class="compra">
                                 <h3>Datos personales</h3>
                                 <p> <span class="negrita">Cliente: </span><?= $row["nombre"] ?></p>
-                                <p> <span class="negrita">Domicilio: </span><?= $row["direccion"] ?></p>
                                 <p> <span class="negrita">Telefono: </span><?= $row["telefono"] ?></p>
-                                                       
+                                <div class="campo">
                                 <p> <span class="negrita">Calle: </span></p>
-                            <input class="input-text" type="text"  name="calle" type="text" id="calle" placeholder="Calle">
-                        
-                        
-                            <p> <span class="negrita">No_exterior: </span></p>
-                            <input class="input-text" type="number"  name="no_exterior" type="text" id="no_exterior" placeholder="No_exterior">
-                        
-                        
-                            <p> <span class="negrita">Colonia: </span></p>
-                            <input class="input-text" type="text"  name="colonia" type="text" id="colonia" placeholder="Colonia">
-                       
-                            <p> <span class="negrita">Numero de cuenta: </span></p>
-                            <input class="input-text" type="text"  name="cuenta" type="text" id="colonia" placeholder="Numero de cuenta">
-                                <button class="button" type="submit">Pagar</button>
-                                    <!-- </form> -->
-                                </form>
-   
+                                <input class="input-text" type="text"  name="calle" type="text" id="calle" placeholder="Calle">
+                            
+                            
+                                <p> <span class="negrita">No_exterior: </span></p>
+                                <input class="input-text" type="number"  name="no_ext" type="text" id="no_ext" placeholder="No_exterior">
+                            
+                            
+                                <p> <span class="negrita">Colonia: </span></p>
+                                <input class="input-text" type="text"  name="colonia" type="text" id="colonia" placeholder="Colonia">
+                                                        
+                                <p> <span class="negrita">Numero de cuenta: </span></p>
+                                <input class="input-text" type="text"  name="cuenta" type="text" id="cuenta" placeholder="Numero de cuenta">
+                                    <button class="button" type="submit">Pagar</button>
+                                        <!-- </form> -->
+                                    </form>
+            </div>
                             </div>
 
                             
@@ -177,10 +177,12 @@ $total = 0;
 $sql_busqueda = "SELECT * FROM carrito WHERE id_usuario = '$id_usuario'";
 
 $sql_query = mysqli_query($con,$sql_busqueda);
-
-while($row = mysqli_fetch_array($sql_query)){?>
-
-
+$array=[];
+while($row = mysqli_fetch_array($sql_query)){
+    array_push($array,$row);
+    ?>
+    
+    
    
     <tr>
             <td><?= $row["nombre_producto"] ?></td> 
@@ -190,11 +192,12 @@ while($row = mysqli_fetch_array($sql_query)){?>
      </tr>
 
 <?php }
+$_SESSION["productos"]=json_encode($array);
 ?>      
 
 </table>
 
-
+</div>
 
 
     </main>
@@ -219,7 +222,7 @@ while($row = mysqli_fetch_array($sql_query)){?>
               <li><a href="">Productos</a></li>
               <li><a href="">Promociones</a></li>
               <li><a href="../html/Ubicacion.html">Ubicación</a></li>
-              <li><a href="">Contacto</a></li>
+              <li><a href="../html/LoginAdministrador.html">Administracion</a></li>
             </ul>
           </div>
           <div class="footer__column">

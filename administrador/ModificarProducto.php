@@ -55,17 +55,17 @@
                     <div class="contenedor-campos">
                     <div class="campo">
                             <label>ID</label>
-                            <input class="input-text" type="text" REQUIRED name="id" placeholder="id">
+                            <input class="input-text" type="text" REQUIRED name="id" placeholder="id" value="<?php echo isset($id) ? $id : ''; ?>">
                         </div>
 
                         <div class="campo">
                             <label>Nombre</label>
-                            <input class="input-text" type="text" name="nombre" placeholder="Nombre">
+                            <input class="input-text" type="text" name="nombre" placeholder="Nombre" value="<?php echo isset($nombre) ? $nombre : ''; ?>">
                         </div>
 
                         <div class="campo">
                             <label for="Marcas">Marca</label>
-                            <input class="input-text" type="text" name="marca" list="opciones_marcas" placeholder="Seleccione una opción de la lista">
+                            <input class="input-text" type="text" name="marca" list="opciones_marcas" value="<?php echo isset($marca) ? $marca : ''; ?>" placeholder="Seleccione una opción de la lista">
                             <datalist id="opciones_marcas">
                                 <option  value="Honda">
                                 <option  value="Nissan">
@@ -76,12 +76,12 @@
  
                         <div class="campo">
                             <label>Precio</label>
-                            <input class="input-text" type="text" name="precio" placeholder="Precio">
+                            <input class="input-text" type="text" name="precio" placeholder="Precio" value="<?php echo isset($precio) ? $precio : ''; ?>">
                         </div>
 
                         <div class="campo">
                             <label for="Tipo">Tipo</label>
-                            <input class="input-text" type="text" name="tipo" list="opciones_tipos" placeholder="Seleccione una opción de la lista">
+                            <input class="input-text" type="text" name="tipo" list="opciones_tipos" placeholder="Seleccione una opción de la lista" value="<?php echo isset($tipo) ? $tipo : ''; ?>">
                             <datalist id="opciones_tipos">
                                 <option  value="Sedan">
                                 <option  value="Camionetas">
@@ -92,21 +92,22 @@
 
                         <div class="campo">
                             <label>Descripción</label>
-                            <textarea class="input-text" id="" name="descripcion" cols="30" rows="10"></textarea>
+                            <textarea class="input-text" id="" name="descripcion" cols="30" rows="10" value="<?php echo isset($descripcion) ? $descripcion : ''; ?>"></textarea>
                         </div>
 
                         <div class="campo">
                             <label>URL de la Imagen</label>
-                            <input class="input-text" type="text" name="imagen" placeholder="URL">
+                            <input class="input-text" type="text" name="imagen" placeholder="URL" value="<?php echo isset($imagen) ? $imagen : ''; ?>">
                         </div>
 
                         <div class="campo">
                             <label>Stock</label>
-                            <input class="input-text" type="text" name="stock" placeholder="Stock">
+                            <input class="input-text" type="number" name="stock" placeholder="Stock" value="<?php echo isset($stock) ? $stock : ''; ?>">
                         </div>
     
 
                         <div class="alinear-derecha flex">
+                            <input class="button button_move" type="submit" value="Imprimir" name="imprimir"></input>
                             <input class="button button_eliminar button_move" type="submit" value="Eliminar" name="eliminar"></input>
                             <input class="button button_move" type="submit" value="Modificar" name="modificar"></input>
                         </div>
@@ -135,7 +136,7 @@ include 'BusquedaProducto.php';
             <td><?= $row["id"] ?></td>
             <td><?= $row["nombre"] ?></td>
             <td><?= $row["marca"] ?></td>
-            <td><?= $row["precio"] ?></td>
+            <td>$<?= $row["precio"] ?></td>
             <td><?= $row["tipo"] ?></td>
             <td><?= $row["descripcion"] ?></td>
             <td><img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto"></td>
@@ -151,6 +152,7 @@ include 'BusquedaProducto.php';
     <footer class="footer">
         <p class="text__footer">Todos los Derechos reservados para The Cars</p>
     </footer>
-    
+
+   
 </body>
 </html>

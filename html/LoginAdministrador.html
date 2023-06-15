@@ -24,15 +24,28 @@
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a  href="/Proyecto Final/cliente/HomeUsuario.php">
-                    <img src="../icon/SpeedWheels2.jpg" alt="">
-                </a>
+                <ul class="menu_horizontal">
+                    <li>
+                        <a href="/Proyecto Final/html/Home.html">
+                            <img src="../icon/SpeedWheels (1).jpg" alt="">
+                        </a>
+                    </li>
+                </ul>
             </section>
             <section class="nav__derecha">
-                <a href="/Proyecto Final/php/Productos.php">Productos</a>
-                <a href="Ubicacion.html">Ubicación</a>
-                <a href="Registro.html">Registro</a>
-                <a href="Login.html">Login</a>
+                <ul class="menu_horizontal">
+                    <li><a href="">Productos v </a>
+                        <ul class="menu_vertical">
+                            <li><a href="/Proyecto Final/php/Honda.php">Honda</a></li>
+                            <li><a href="/Proyecto Final/php/Nissan.php">Nissan</a></li>
+                            <li><a href="/Proyecto Final/php/Ford.php">Ford</a></li>
+                            <li><a href="/Proyecto Final/php/Chevrolet.php">Chevrolet</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a></li>
+                    <li><a href="/Proyecto Final/html/Registro.html"><span class="login_circular">Sing up</span></a></li>
+                    <li><a href="/Proyecto Final/html/Login.html"><span class="login_circular">Log in</span></a></li>
+                </ul>
             </section>
         </nav>
     </div>
@@ -59,10 +72,6 @@
 
                         <div class="alinear-derecha flex">
                             <button class="button button_move--Login" class="input-text" type="submit" name="login" value="Iniciar Sesión">Iniciar Sesión</button>
-                        </div>
-
-                        <div class="campo_contraseña">
-                            <a class="contraseña_link" href="">¿Olvidaste tu contraseña?</a>
                         </div>
 
                     </div>

@@ -66,7 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['agregar'])) {
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
 
     $sql_modificar = "UPDATE producto SET nombre = '$nombre', marca = '$marca',
-    precio = '$precio', tipo = '$tipo', descripcion = '$descripcion', imagen = '$imagen'  WHERE id = $id";
+    precio = '$precio', tipo = '$tipo', descripcion = '$descripcion', imagen = '$imagen', stock =
+    '$stock'  WHERE id = $id";
         
     if(mysqli_query($con , $sql_modificar)){
         header('Location: ModificarProducto.php');
@@ -76,16 +77,54 @@ if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
     } 
 }
 
-if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['eliminar'])){
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['eliminar'])) {
+    $id = $_POST['id']; 
 
-    $sql_eliminar = "DELETE FROM producto WHERE id = $id";
-        
-    if(mysqli_query($con , $sql_eliminar)){
-        header('Location: ModificarProducto.php');
-    }
-    else{
-        echo "Error " .$sql. "<db>" .mysqli_error($con);
+    $sql_eliminar_carrito = "DELETE FROM carrito WHERE id_producto = $id";
+    
+    if(mysqli_query($con, $sql_eliminar_carrito)){
+    // Eliminar registros relacionados en la tabla "historial_productos"
+        $sql_eliminar_historial = "DELETE FROM historial_productos WHERE id_producto = $id";
+        if (mysqli_query($con, $sql_eliminar_historial)) {
+        //Eliminar los registros relacionados, puedes proceder a eliminar el registro en la tabla "producto"
+            $sql_eliminar_producto = "DELETE FROM producto WHERE id = $id";
+            if (mysqli_query($con, $sql_eliminar_producto)) {
+                header('Location: ModificarProducto.php');
+            } else {
+                echo "Error al eliminar el producto: " . mysqli_error($con);
+            }
+        } else {
+            echo "Error al eliminar el historial de productos: " . mysqli_error($con);
+        }
     }
 }
+
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['imprimir'])) {
+  
+    // Verificar si se ha enviado un ID en la solicitud
+        $id = $_POST['id'];
+        
+        // Realizar la consulta a la base de datos para obtener los valores del producto
+        $sql = "SELECT * FROM producto WHERE id = $id";
+        $result = mysqli_query($con, $sql);
+        
+        // Verificar si se encontró un registro con el ID especificado
+        if ($row = mysqli_fetch_assoc($result)) {
+            // Asignar los valores a las variables
+            $nombre = $row['nombre'];
+            $marca = $row['marca'];
+            $precio = $row['precio'];
+            $tipo = $row['tipo'];
+            $descripcion = $row['descripcion'];
+            $imagen = $row['imagen'];
+            $stock = $row['stock'];
+        } else {
+            // Manejar el caso en el que no se encuentre un registro con el ID especificado
+            echo "No se encontró ningún producto con el ID especificado.";
+        }
+    
+}
+
+
 
 ?>

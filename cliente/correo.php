@@ -1,25 +1,24 @@
 <?php
-
 session_start();
-
 include "../php/Conexion.php";
-
-$nombre = $_SESSION['nombre'];
-$telefono = $_SESSION['telefono'];
-// $direccion = $_SESSION['direccion'];
-$correo = $_SESSION['correo'];
-$producto = $_SESSION['nombre_producto'];
-$fecha = $_SESSION['fecha'];
-$total = $_SESSION['total'];
+require "../vendor/autoload.php";
+use PHPMailer\PHPMailer\PHPMailer;
+include "../fpdf185/fpdf.php";
 
 $id_usuario = $_SESSION['id_usuario']; 
+$nombre = $_SESSION['nombre'];
+$telefono = $_SESSION['telefono'];
+$correo = $_SESSION['correo'];
+$total = $_SESSION['total'];
+$productos = json_decode($_SESSION["productos"]);
+$producto = $productos[0]->nombre_producto;
 
-
-$sql_historial = "SELECT * FROM historial WHERE id_usuario = '$id_usuario'";
+$id_usuario = $_SESSION['id_usuario']; 
+$sql_historial = "SELECT * FROM historial WHERE id_usuario = $id_usuario";
 $resultado_historial = $con->query($sql_historial);
 $datos_historial = mysqli_fetch_assoc($resultado_historial);
 
-$sql_carrito = "SELECT * FROM carrito WHERE id_usuario = '$id_usuario'";
+$sql_carrito = "SELECT * FROM carrito WHERE id_usuario = $id_usuario";
 $resultado_carrito = $con->query($sql_carrito);
 
 $sql_usuario = "SELECT * FROM usuario WHERE nombre = '$nombre' and correo = '$correo'
@@ -28,39 +27,71 @@ $resultado_usuario = $con->query($sql_usuario);
 $datos_usuario = mysqli_fetch_assoc($resultado_usuario);
 
 
-// $sql_busqueda = "SELECT * FROM usuario WHERE  nombre = '$nombre' and correo = '$correo'
-// and telefono = '$telefono' and direccion = '$direccion'";
+ $sql_busqueda = "SELECT * FROM usuario WHERE  nombre = '$nombre' and correo = '$correo'
+ and telefono = '$telefono' ";
 
-$to =  $correo ;
-$subject = 'Asunto del mensaje';
 
-$message = "Este mensaje ha sido enviado por SpeedWheels\n";
-$message .= "Para: " . $datos_usuario['nombre'] . "\n";
-$message .= "Teléfono: " . $datos_usuario['telefono'] . "\n";
-$message .= "Automóvil:" . "\n";
-if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
-    while ($fila_carrito = mysqli_fetch_assoc($resultado_carrito)) {
-        // Obtener los datos específicos del carrito
-        $nombre_producto = $fila_carrito['nombre_producto'];
-        // Otros campos del carrito
-        
-        // Mostrar los datos del carrito
-        $message .= "\t\t$nombre_producto \n";
-        // Mostrar otros campos del carrito
-        
+
+    include "../php/Conexion.php";
+
+    // Crear un nuevo objeto FPDF
+    $pdf = new FPDF();
+
+    // Agregar una nueva página al PDF
+    $pdf->AddPage();
+
+    // Generar el contenido del PDF
+    $pdf->SetFont('Arial', 'B', 18);
+    $pdf->Cell(0, 10, 'Este mensaje ha sido enviado por SpeedWheels', 0, 1);
+    $pdf->Ln(10); // Cambio de ln a Ln
+    $pdf->SetFont('Arial', 'B', 14);
+    $pdf->Cell(0, 10, 'Para: ' . $nombre, 0, 1); // Cambio de $datos_usuario['nombre'] a $nombre
+    $pdf->Cell(0, 10, 'Teléfono: ' . $telefono, 0, 1); // Cambio de $datos_usuario['telefono'] a $telefono
+    $pdf->Cell(0, 10, 'Automóvil:', 0, 1);
+
+    if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
+        while ($fila_carrito = mysqli_fetch_assoc($resultado_carrito)) {
+            // Obtener los datos específicos del carrito
+            $nombre_producto = $fila_carrito['nombre_producto'];
+            // Otros campos del carrito
+            
+            // Agregar los datos del carrito al PDF
+            $pdf->Cell(0, 10, "\t\t$nombre_producto", 0, 1);
+            // Agregar otros campos del carrito al PDF
+            
+        }
     }
-}
+    $fecha = date('l jS \of F Y h:i:s A');
+    $pdf->Cell(0, 10, 'Fecha: ' . $fecha, 0, 1); // Cambio de $datos_historial['fecha'] a $fecha
+    $pdf->Cell(0, 10, 'Total: $' . $total, 0, 1); // Cambio de $datos_historial['total'] a $total
 
-$message .= "Fecha: " . $datos_historial['fecha'] . "\n";
-$message .= "Total:$" . $datos_historial['total'] . "\n";
+      // Guardar el PDF en el servidor
+    $pdfPath = '../pdf/orden'.$id_usuario.'.pdf';
+    $pdf->Output($pdfPath, 'F');
 
+    // Definir los encabezados del correo electrónico
+    $mail = new PHPMailer();
+	$mail->CharSet = 'utf-8';
+	$mail->Host = "smtp.googlemail.com";
+	$mail->From = "rodriguez.salazar.hector1@gmail.com";
+	$mail->IsSMTP();
+	$mail->SMTPAuth = true;
+	$mail->Username = "rodriguez.salazar.hector1@gmail.com";
+	$mail->Password = "qvolbvlxthjyiodr";
+	$mail->SMTPSecure = "ssl";
+	$mail->Port = 465;
+	$mail->AddAddress($correo);
+	$mail->SMTPDebug = 0;   //Muestra las trazas del mail, 0 para ocultarla
+	$mail->isHTML(true);                                  // Set email format to HTML
+	$mail->Subject = 'GRACIAS POR PREFERIRNOS!';
+	$mail->Body = '<b>Adjuntamos un resumen de tu compra nwn</b>';
+	$mail->AltBody = 'Te mandamos el resumen de tu compra';
 
-$headers = 'From: rodriguez.salazar.hector1@gmail.com' . "\r\n";
-$headers .= 'Reply-To: rodriguez.salazar.hector1@gmail.com' . "\r\n";
-$headers .= 'X-Mailer: PHP/' . phpversion();
+	$inMailFileName = "recibo.pdf";
+	$filePath = "../pdf/orden$id_usuario.pdf";
+	$mail->AddAttachment($filePath, $inMailFileName);
 
-mail($to, $subject, $message, $headers);
-
+	$mail->send();
 
 
     // Obtener el ID de la sucursal en función de la dirección
@@ -70,9 +101,9 @@ $usuario = mysqli_fetch_assoc($usuario_query );
     if ($usuario) {
         $id = $usuario['id'];
 
-    $sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario,cuenta) 
-    values (NULL,'".$_POST['calle']."', '".$_POST['no_exterior']."', '".$_POST['colonia']."',
-    '$id', '".$_POST['cuenta']."')");
+        $id = mysqli_insert_id($con);
+    $sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario) 
+    values (NULL,'".$_POST['calle']."', '".$_POST['no_ext']."', '".$_POST['colonia']."','$id')");
 
 }
 

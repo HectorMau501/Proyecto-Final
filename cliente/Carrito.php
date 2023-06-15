@@ -147,6 +147,7 @@ while($row = mysqli_fetch_array($sql_query)){?>
         ?>
 
 <?php }
+    $_SESSION["total"]=$total;
 ?>  
         </table>
     <section class="grid_right">
@@ -187,7 +188,7 @@ while($row = mysqli_fetch_array($sql_query)){?>
               <li><a href="">Productos</a></li>
               <li><a href="">Promociones</a></li>
               <li><a href="../html/Ubicacion.html">Ubicación</a></li>
-              <li><a href="">Contacto</a></li>
+              <li><a href="../html/LoginAdministrador.html">Administracion</a></li>
             </ul>
           </div>
           <div class="footer__column">
