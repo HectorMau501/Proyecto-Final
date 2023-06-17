@@ -13,7 +13,6 @@ $total = $_SESSION['total'];
 $productos = json_decode($_SESSION["productos"]);
 $producto = $productos[0]->nombre_producto;
 
-$id_usuario = $_SESSION['id_usuario']; 
 $sql_historial = "SELECT * FROM historial WHERE id_usuario = $id_usuario";
 $resultado_historial = $con->query($sql_historial);
 $datos_historial = mysqli_fetch_assoc($resultado_historial);
@@ -83,9 +82,9 @@ $datos_usuario = mysqli_fetch_assoc($resultado_usuario);
 	$mail->AddAddress($correo);
 	$mail->SMTPDebug = 0;   //Muestra las trazas del mail, 0 para ocultarla
 	$mail->isHTML(true);                                  // Set email format to HTML
-	$mail->Subject = 'GRACIAS POR PREFERIRNOS!';
-	$mail->Body = '<b>Adjuntamos un resumen de tu compra nwn</b>';
-	$mail->AltBody = 'Te mandamos el resumen de tu compra';
+	$mail->Subject = 'Gracias por la Compra!';
+	$mail->Body = '<b>Este es el recibo de tu compra:)</b>';
+	$mail->AltBody = 'Hemos enviado el recibo';
 
 	$inMailFileName = "recibo.pdf";
 	$filePath = "../pdf/orden$id_usuario.pdf";
@@ -102,8 +101,9 @@ $usuario = mysqli_fetch_assoc($usuario_query );
         $id = $usuario['id'];
 
         $id = mysqli_insert_id($con);
-    $sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario) 
-    values (NULL,'".$_POST['calle']."', '".$_POST['no_ext']."', '".$_POST['colonia']."','$id')");
+    $sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario,cuenta) 
+    values (NULL,'".$_POST['calle']."', '".$_POST['no_ext']."', '".$_POST['colonia']."'
+    ,'$id_usuario','".$_POST['cuenta']."')");
 
 }
 
