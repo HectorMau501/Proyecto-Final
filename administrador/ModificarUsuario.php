@@ -78,6 +78,16 @@
                             <input class="input-text" type="number" name="telefono"  id="telefono" type="text" placeholder="Teléfono">
                         </div>
 
+                        <div class="campo">
+                            <label for="contrasena">Edad</label>
+                            <input class="input-text" type="number" name="edad" id="edad" type="text" placeholder="Edad">
+                        </div>
+
+                        <div class="campo">
+                            <label for="telefono">Pais</label>
+                            <input class="input-text" type="text" name="pais"  id="telefono" type="text" placeholder="Pais">
+                        </div>
+
                         <div class="alinear-derecha flex">
                             <input class="button button_eliminar button_move" type="submit" value="Eliminar" name="eliminar"></input>
                             <input class="button button_move" type="submit" value="Modificar" name="modificar"></input>                        
@@ -95,6 +105,8 @@
                     <th>Correo</th>
                     <th>Contraseña</th>
                     <th>Teléfono</th>
+                    <th>Edad</th>
+                    <th>País</th>
                 </tr>            
     
     <?php
@@ -109,6 +121,8 @@
              <td><?= $row["correo"] ?></td> 
              <td><?= $row["password"] ?></td> 
              <td><?= $row["telefono"] ?></td> 
+             <td><?= $row["edad"] ?></td> 
+             <td><?= $row["pais"] ?></td> 
          </tr>
     
 <?php }

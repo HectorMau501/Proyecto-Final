@@ -71,6 +71,8 @@
                     <th>Correo</th>
                     <th>Contraseña</th>
                     <th>Teléfono</th>
+                    <th>Edad</th>
+                    <th>País</th>
                 </tr>            
  
     <?php
@@ -85,6 +87,8 @@
              <td><?= $row["correo"] ?></td> 
              <td><?= $row["password"] ?></td> 
              <td><?= $row["telefono"] ?></td> 
+             <td><?= $row["edad"] ?></td> 
+             <td><?= $row["pais"] ?></td> 
          </tr>
     
 <?php }

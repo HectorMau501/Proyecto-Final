@@ -107,7 +107,6 @@
     
 
                         <div class="alinear-derecha flex">
-                            <input class="button button_move" type="submit" value="Imprimir" name="imprimir"></input>
                             <input class="button button_eliminar button_move" type="submit" value="Eliminar" name="eliminar"></input>
                             <input class="button button_move" type="submit" value="Modificar" name="modificar"></input>
                         </div>

@@ -7,8 +7,9 @@ $id = 0;
 $nombre = $_POST['nombre'];
 $correo = $_POST['correo'];
 $contrasena = $_POST['password'];
-$direccion = $_POST['direccion'];
 $telefono = $_POST['telefono'];
+$edad = $_POST['edad'];
+$pais = $_POST['pais'];
 
 if(isset($_POST['id'])){
     $id = $_POST['id'];
@@ -19,8 +20,8 @@ if(isset($_POST['id'])){
 
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['agregar'])){
 
-$sql = mysqli_query($con, "INSERT INTO usuario (id,nombre,correo,password,telefono,direccion) 
-values (0,'$nombre', '$correo', '$contrasena', '$telefono', '$direccion')");
+$sql = mysqli_query($con, "INSERT INTO usuario (id,nombre,correo,password,telefono,edad,pais) 
+values (0,'$nombre', '$correo', '$contrasena', '$telefono','$edad','$pais' )");
 
 
     if($sql){
@@ -35,7 +36,7 @@ values (0,'$nombre', '$correo', '$contrasena', '$telefono', '$direccion')");
 if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['modificar'])){
 
     $sql_modificar = "UPDATE usuario SET nombre = '$nombre', correo = '$correo',
-    password = '$contrasena', direccion = '$direccion', telefono = '$telefono'  WHERE id = $id";
+    password = '$contrasena',  telefono = '$telefono', edad = '$edad', pais = '$pais'  WHERE id = $id";
         
     if(mysqli_query($con , $sql_modificar)){
         header('Location: ModificarUsuario.php');
