@@ -14,8 +14,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="/Proyecto Final/css/StylesAdministrador.css">
-    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
+    <link rel="stylesheet" href="../css/StylesAdministrador.css">
+    <link rel="stylesheet" href="../css/normalize.css">
 
    
     <div class="nav-bg">
