@@ -1,9 +1,17 @@
 <?php
+
 session_start();
-include "../php/Conexion.php";
-require "../vendor/autoload.php";
+
+include '../php/Conexion.php';
 use PHPMailer\PHPMailer\PHPMailer;
-include "../fpdf185/fpdf.php";
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require "../vendor/autoload.php";
+require('../fpdf185/fpdf.php');
+require('../PHPMailer/src/PHPMailer.php');
+require('../PHPMailer/src/SMTP.php');
+require('../PHPMailer/src/Exception.php');
 
 $id_usuario = $_SESSION['id_usuario']; 
 $nombre = $_SESSION['nombre'];
@@ -13,25 +21,12 @@ $total = $_SESSION['total'];
 $productos = json_decode($_SESSION["productos"]);
 $producto = $productos[0]->nombre_producto;
 
-$sql_historial = "SELECT * FROM historial WHERE id_usuario = $id_usuario";
-$resultado_historial = $con->query($sql_historial);
-$datos_historial = mysqli_fetch_assoc($resultado_historial);
 
 $sql_carrito = "SELECT * FROM carrito WHERE id_usuario = $id_usuario";
 $resultado_carrito = $con->query($sql_carrito);
 
-$sql_usuario = "SELECT * FROM usuario WHERE nombre = '$nombre' and correo = '$correo'
- and telefono = '$telefono'";
-$resultado_usuario = $con->query($sql_usuario);
-$datos_usuario = mysqli_fetch_assoc($resultado_usuario);
-
-
  $sql_busqueda = "SELECT * FROM usuario WHERE  nombre = '$nombre' and correo = '$correo'
  and telefono = '$telefono' ";
-
-
-
-    include "../php/Conexion.php";
 
     // Crear un nuevo objeto FPDF
     $pdf = new FPDF();
@@ -45,8 +40,8 @@ $datos_usuario = mysqli_fetch_assoc($resultado_usuario);
     $pdf->Ln(10); // Cambio de ln a Ln
     $pdf->SetFont('Arial', 'B', 14);
     $pdf->Cell(0, 10, 'Para: ' . $nombre, 0, 1); // Cambio de $datos_usuario['nombre'] a $nombre
-    $pdf->Cell(0, 10, 'Teléfono: ' . $telefono, 0, 1); // Cambio de $datos_usuario['telefono'] a $telefono
-    $pdf->Cell(0, 10, 'Automóvil:', 0, 1);
+    $pdf->Cell(0, 10, 'Telefono: ' . $telefono, 0, 1); // Cambio de $datos_usuario['telefono'] a $telefono
+    $pdf->Cell(0, 10, 'Automovil:', 0, 1);
 
     if ($resultado_carrito && $resultado_carrito->num_rows > 0) {
         while ($fila_carrito = mysqli_fetch_assoc($resultado_carrito)) {
@@ -87,42 +82,57 @@ $datos_usuario = mysqli_fetch_assoc($resultado_usuario);
 	$mail->AltBody = 'Hemos enviado el recibo';
 
 	$inMailFileName = "recibo.pdf";
-	$filePath = "../pdf/orden$id_usuario.pdf";
+	$filePath = "../pdf/orden" .$id_usuario.".pdf" ;
 	$mail->AddAttachment($filePath, $inMailFileName);
 
 	$mail->send();
 
+$credentials = array(
+    'mau',
+    '123'
+);
+
+$filenameP = "orden".$id_usuario.".pdf";
+
+//$filePath = '../pdf/'.$filenameP;
+$filesize = filesize($filePath);
+$fh = fopen($filePath, 'r');
+
+$remoteUrl = '10.0.0.4/';
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, $remoteUrl . $filenameP);
+curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
+//curl_setopt($ch, CURLOPT_USERPWD, implode(':', $credentials));
+
+curl_setopt($ch, CURLOPT_PUT, true);
+curl_setopt($ch, CURLOPT_INFILE, $fh);
+curl_setopt($ch, CURLOPT_INFILESIZE, $filesize);
+
+$response = curl_exec($ch);
+
+if($response == true){
+    echo "File posted.";
+}else{
+    "Error:" .curl_error($ch);
+}
+
+fclose($fh);
 
     // Obtener el ID de la sucursal en función de la dirección
 $usuario_query = mysqli_query($con, "SELECT id FROM usuario");
 $usuario = mysqli_fetch_assoc($usuario_query );
 
-    if ($usuario) {
-        $id = $usuario['id'];
-
-        $id = mysqli_insert_id($con);
-    $sql1 = mysqli_query($con, "INSERT INTO usuario_info (id_usuarioinfo,calle,no_ext,colonia,id_usuario,cuenta) 
-    values (NULL,'".$_POST['calle']."', '".$_POST['no_ext']."', '".$_POST['colonia']."'
-    ,'$id_usuario','".$_POST['cuenta']."')");
-
-}
-
-
-
 //Agregar
-
 if(isset($_SESSION['id_usuario'])){
     // El usuario ha iniciado sesión, podemos agregar el producto al carrito
     $id_usuario = $_SESSION['id_usuario'];
-    
-    // Consulta para agregar el producto al carrito
-    
+       
     // Actualizar el total en la tabla 'historial' para el usuario actual
-   
     $sql_busqueda = "SELECT * FROM carrito WHERE id_usuario = '$id_usuario'";
     $sql_query = mysqli_query($con, $sql_busqueda);
    
-    //if(mysqli_num_rows($sql_query) > 0){
     $total = 0;
 
     while ($row = mysqli_fetch_array($sql_query)) {
@@ -132,36 +142,19 @@ if(isset($_SESSION['id_usuario'])){
         $subtotal = $precio_producto * $cantidad;
         $total += $subtotal;
     }
- 
-    
-    $query = mysqli_query($con, "INSERT INTO historial (id_usuario, fecha, total) 
-        VALUES ('".$id_usuario."', CURRENT_TIMESTAMP(), '".$total."')");
+     
+$query = "DELETE FROM carrito WHERE id_usuario = $id_usuario";
+$sql_query = mysqli_query($con, $query);
 
     if($query){
-        $id_historial = mysqli_insert_id($con);
-
-        $sql_busqueda = "SELECT * FROM carrito WHERE id_usuario = '$id_usuario'";
-        $sql_query = mysqli_query($con, $sql_busqueda);
-    
-    while($row = mysqli_fetch_array($sql_query)){
-        $id_producto = $row["id_producto"];
-        $query = mysqli_query($con, "INSERT INTO historial_productos (id_producto, id_historial) 
-        VALUES ('$id_producto',  '.$id_historial.')");
-    }   
-    
-    $query = "DELETE FROM carrito WHERE id_usuario = $id_usuario";
-    $sql_query = mysqli_query($con, $query);
-}
-
-        if($query){
-            header("Location: Carrito.php");
-        } else {
+        header("Location: Carrito.php");
+    } else {
             echo "Error al comprar.";
         }
-    }    
- else {
-    // El usuario no ha iniciado sesión, no podemos agregar el producto al carrito
-    echo "Debe iniciar sesión antes de agregar un producto al carrito.";
-}
+}        
+    else {
+        // El usuario no ha iniciado sesión, no podemos agregar el producto al carrito
+        echo "Debe iniciar sesión antes de agregar un producto al carrito.";
+    }
 
 ?>
