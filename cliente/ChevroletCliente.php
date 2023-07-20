@@ -35,7 +35,7 @@ mysqli_close($con);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <link rel="stylesheet" href="../css/StylesUsuario.css">
-    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
+    <link rel="stylesheet" href="../css/normalize.css">
 
 
 </head>
