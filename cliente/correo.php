@@ -66,14 +66,13 @@ $resultado_carrito = $con->query($sql_carrito);
     // Definir los encabezados del correo electrónico
     $mail = new PHPMailer();
 	$mail->CharSet = 'utf-8';
-	$mail->Host = "smtp.googlemail.com";
+	$mail->Host = "smtp.gmail.com";
 	$mail->From = "rodriguez.salazar.hector1@gmail.com";
 	$mail->IsSMTP();
 	$mail->SMTPAuth = true;
 	$mail->Username = "rodriguez.salazar.hector1@gmail.com";
 	$mail->Password = "qvolbvlxthjyiodr";
-	$mail->SMTPSecure = "ssl";
-	$mail->Port = 465;
+	$mail->Port = 587;
 	$mail->AddAddress($correo);
 	$mail->SMTPDebug = 0;   //Muestra las trazas del mail, 0 para ocultarla
 	$mail->isHTML(true);                                  // Set email format to HTML
@@ -87,38 +86,6 @@ $resultado_carrito = $con->query($sql_carrito);
 
 	$mail->send();
 
-$credentials = array(
-    'mau',
-    '123'
-);
-
-$filenameP = "orden".$id_usuario.".pdf";
-
-//$filePath = '../pdf/'.$filenameP;
-$filesize = filesize($filePath);
-$fh = fopen($filePath, 'r');
-
-$remoteUrl = '10.0.0.4/';
-
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, $remoteUrl . $filenameP);
-curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_ANY);
-//curl_setopt($ch, CURLOPT_USERPWD, implode(':', $credentials));
-
-curl_setopt($ch, CURLOPT_PUT, true);
-curl_setopt($ch, CURLOPT_INFILE, $fh);
-curl_setopt($ch, CURLOPT_INFILESIZE, $filesize);
-
-$response = curl_exec($ch);
-
-if($response == true){
-    echo "File posted.";
-}else{
-    "Error:" .curl_error($ch);
-}
-
-fclose($fh);
 
     // Obtener el ID de la sucursal en función de la dirección
 $usuario_query = mysqli_query($con, "SELECT id FROM usuario");

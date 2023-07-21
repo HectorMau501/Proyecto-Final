@@ -133,24 +133,12 @@ if(isset($_SESSION['correo'])){
                                 <h3>Datos personales</h3>
                                 <p> <span class="negrita">Cliente: </span><?= $row["nombre"] ?></p>
                                 <p> <span class="negrita">Telefono: </span><?= $row["telefono"] ?></p>
-                                <div class="campo">
-                                <p> <span class="negrita">Calle: </span></p>
-                                <input class="input-text" type="text"  name="calle" type="text" id="calle" placeholder="Calle">
-                            
-                            
-                                <p> <span class="negrita">No_exterior: </span></p>
-                                <input class="input-text" type="number"  name="no_ext" type="text" id="no_ext" placeholder="No_exterior">
-                            
-                            
-                                <p> <span class="negrita">Colonia: </span></p>
-                                <input class="input-text" type="text"  name="colonia" type="text" id="colonia" placeholder="Colonia">
                                                         
-                                <p> <span class="negrita">Numero de cuenta: </span></p>
-                                <input class="input-text" type="text"  name="cuenta" type="text" id="cuenta" placeholder="Numero de cuenta">
+
                                     <button class="button" type="submit">Pagar</button>
                                         <!-- </form> -->
                                     </form>
-            </div>
+         
                             </div>
 
                             

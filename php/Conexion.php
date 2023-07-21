@@ -4,8 +4,8 @@
 
 $server="localhost";
 $database= "VentaAutomoviles";
-$username= "mauricio";
-$password="12345";
+$username= "root";
+$password="";
 
 //Aqui se traen las variables para poderlas enviar
 
