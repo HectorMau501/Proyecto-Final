@@ -35,8 +35,8 @@ mysqli_close($con);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <link rel="stylesheet" href="/Proyecto Final/css/StylesUsuario.css">
-    <link rel="stylesheet" href="/Proyecto Final/css/normalize.css">
+    <link rel="stylesheet" href="../css/StylesUsuario.css">
+    <link rel="stylesheet" href="../css/normalize.css">
 
 </head>
 
@@ -47,7 +47,7 @@ mysqli_close($con);
             <section class="nav__izquierda">
                 <ul class="menu_horizontal">
                     <li>
-                        <a href="/Proyecto Final/html/Home.html">
+                        <a href="../html/Home.html">
                             <img src="../icon/SpeedWheels (1).jpg" alt="">
                         </a>
                     </li>
@@ -57,15 +57,15 @@ mysqli_close($con);
                 <ul class="menu_horizontal">
                     <li><a href="">Productos</a>
                         <ul class="menu_vertical">
-                            <li><a href="/Proyecto Final/php/Honda.php">Honda</a></li>
-                            <li><a href="/Proyecto Final/php/Nissan.php">Nissan</a></li>
-                            <li><a href="/Proyecto Final/php/Ford.php">Ford</a></li>
-                            <li><a href="/Proyecto Final/php/Chevrolet.php">Chevrolet</a></li>
+                            <li><a href="../php/Honda.php">Honda</a></li>
+                            <li><a href="../php/Nissan.php">Nissan</a></li>
+                            <li><a href="../php/Ford.php">Ford</a></li>
+                            <li><a href="../php/Chevrolet.php">Chevrolet</a></li>
                         </ul>
                     </li>
-                    <li><a href="/Proyecto Final/html/Ubicacion.html">Ubicación</a></li>
-                    <li><a href="/Proyecto Final/html/Registro.html"><span class="login_circular">Sing up</span></a></li>
-                    <li><a href="/Proyecto Final/html/Login.html"><span class="login_circular">Log in</span></a></li>
+                    <li><a href="../html/Ubicacion.html">Ubicación</a></li>
+                    <li><a href="../html/Registro.html"><span class="login_circular">Sing up</span></a></li>
+                    <li><a href="../html/Login.html"><span class="login_circular">Log in</span></a></li>
                 </ul>
             </section>
         </nav>
@@ -85,7 +85,7 @@ mysqli_close($con);
         <form action="formulario" method="POST" action="Carrito.php">
             <div class="producto">
                 <div class="producto__imagen">
-                    <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
+                    <img src="../img/<?php echo $row['imagen']; ?>" alt="imagen auto">
                 </div>
                 <div class="producto__informacion">
                     <h3 class="no-margin producto__nombre"><?php echo $row['marca']; ?> 

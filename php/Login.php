@@ -31,10 +31,10 @@ if($nr == 1){
     $_SESSION['correo'] = $correo;
     $_SESSION['telefono'] = $telefono;
     $_SESSION['direccion'] = $direccion;
-    header("location:/Proyecto Final/cliente/HomeUsuario.php");
+    header("location:../cliente/HomeUsuario.php");
 }
 else if($nr == 0){
     // El usuario no se autenticó correctamente
-    header("location:/Proyecto Final/html/Login.html");
+    header("location:../html/Login.html");
 }
 ?>

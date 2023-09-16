@@ -18,6 +18,6 @@ if(isset($_SESSION['carrito'])){
     }
 }
 
-header("Location: /Proyecto Final/cliente/Carrito.php");
+header("Location: ../cliente/Carrito.php");
 
 ?>

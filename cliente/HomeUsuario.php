@@ -54,7 +54,7 @@ if(isset($_SESSION['correo'])){
             <section class="nav__izquierda">
                 <ul class="menu_horizontal">
                     <li>
-                        <a href="/Proyecto Final/cliente/HomeUsuario.php">
+                        <a href="../cliente/HomeUsuario.php">
                             <img src="../icon/SpeedWheels (1).jpg" alt="">
                         </a>
                     </li>
@@ -64,13 +64,13 @@ if(isset($_SESSION['correo'])){
                 <ul class="menu_horizontal">
                     <li><a href="">Productos</a>
                         <ul class="menu_vertical">
-                            <li><a href="/Proyecto Final/cliente/HondaCliente.php">Honda</a></li>
-                            <li><a href="/Proyecto Final/cliente/NissanCliente.php">Nissan</a></li>
-                            <li><a href="/Proyecto Final/cliente/FordCliente.php">Ford</a></li>
-                            <li><a href="/Proyecto Final/cliente/ChevroletCliente.php">Chevrolet</a></li>
+                            <li><a href="../cliente/HondaCliente.php">Honda</a></li>
+                            <li><a href="../cliente/NissanCliente.php">Nissan</a></li>
+                            <li><a href="../cliente/FordCliente.php">Ford</a></li>
+                            <li><a href="../cliente/ChevroletCliente.php">Chevrolet</a></li>
                         </ul>
                     </li>
-                    <li><a href="/Proyecto Final/cliente/UbicacionCliente.php">Ubicación</a></li>
+                    <li><a href="../cliente/UbicacionCliente.php">Ubicación</a></li>
                     <li>
                         <a href="Carrito.php">
                             <img class="" src="../icon/icons8-agregar-a-carrito-de-compras-32 (1).png" alt="" id="imagen-salida">
@@ -78,7 +78,7 @@ if(isset($_SESSION['correo'])){
                         </a>
                     </li>                    
                 <li>    
-                    <a href="/Proyecto Final/html/Home.html">
+                    <a href="../html/Home.html">
                         <img src="../icon/icons8-salida-32 (1).png" alt=""id="imagen-salida">
                         <div class="imagen-hover" id="imagen-hover"></div>
                     </a></li>

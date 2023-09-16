@@ -14,14 +14,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="..css/StylesAdministrador.css">
+    <link rel="stylesheet" href="../css/StylesAdministrador.css">
     <link rel="stylesheet" href="../css/normalize.css">
 
    
     <div class="nav-bg">
             <nav class="navegacion-principal contenedor">
                 <section class="nav__izquierda">
-                    <a class="eslogan" href="/Proyecto Final/html/Home.html">Venta de Automoviles</a>
+                    <a class="eslogan" href="../html/Home.html">Venta de Automoviles</a>
                 </section>
                 <section class="nav__derecha">
                     <a href="../administrador/MostrarUsuario.php">Usuarios</a>

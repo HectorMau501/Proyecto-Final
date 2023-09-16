@@ -22,7 +22,7 @@ if($nr == 1){
     header("location: MostrarUsuario.php");
 }
 else if($nr == 0){
-    header("location:/Proyecto Final/html/LoginAdministrador.html");
+    header("location:../html/LoginAdministrador.html");
 }
 
 

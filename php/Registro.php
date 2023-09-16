@@ -10,7 +10,7 @@ $sql = mysqli_query($con, "INSERT INTO usuario (id,nombre,correo,password,telefo
 
 
 if($sql){
-    header("location:/Proyecto Final/html/Home.html");
+    header("location:../html/Home.html");
 }
 else{
     echo " Usuario no agregado";

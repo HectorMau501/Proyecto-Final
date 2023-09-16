@@ -67,10 +67,10 @@ if(isset($_SESSION['correo'])){
     <div class="nav-bg">
         <nav class="navegacion-principal contenedor">
             <section class="nav__izquierda">
-                <a  href="/Proyecto Final/cliente/HomeUsuario.php"><img src="../icon/SpeedWheels2.jpg" alt=""></a>
+                <a  href="../cliente/HomeUsuario.php"><img src="../icon/SpeedWheels2.jpg" alt=""></a>
             </section>
             <section class="nav__derecha">
-            <a href="/Proyecto Final/cliente/ProductosUsuario.php">Productos</a>
+            <a href="../cliente/ProductosUsuario.php">Productos</a>
                 <a href="UbicacionCliente.php">Ubicación</a>       
             <section class="carrito">
                 <a href="Carrito.php">
@@ -79,7 +79,7 @@ if(isset($_SESSION['correo'])){
                 </a>
             </section>
                <section class="salida">
-                    <a href="/Proyecto Final/html/Home.html">
+                    <a href="../html/Home.html">
                         <img src="../icon/icons8-salida-32.png" alt=""id="imagen-salida">
                         <div class="imagen-hover" id="imagen-hover"></div>
                     </a>
@@ -107,7 +107,7 @@ if(isset($_SESSION['correo'])){
         <div class="producto">
             <a href="shop-single.php?id=<?php echo $row['id']; ?>">
                 <div class="">
-                    <img src="/Proyecto Final/img/<?php echo $row['imagen']; ?>" alt="imagen auto">
+                    <img src="../img/<?php echo $row['imagen']; ?>" alt="imagen auto">
                 </div>
             </a>    
             <div class="producto__informacion">
